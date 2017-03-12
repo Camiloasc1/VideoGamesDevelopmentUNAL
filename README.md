@@ -1,12 +1,10 @@
-# Desarrollo-de-Videojuegos-2017-1
-Repositorio para videojuego en Desarrollo de Videojuegos
+# VideoGamesDevelopementUNAL
+Repo for Video Games Developement at UNAL
 
-Miembros del Equipo:
+Team Members:
 
-Osmond Pomare
-Alejandro Serrano
-Nicolas Larrañaga
-Camilo Sanchez
-Daniel Navas
-
-Test
+* Osmond Pomare
+* Alejandro Serrano
+* Nicolas Larrañaga
+* Camilo Sanchez
+* Daniel Navas

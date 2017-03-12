@@ -282,7 +282,7 @@ namespace Plugins.Editor.JetBrains
 
     public static void Log(object message)
     {
-      Debug.Log("[Rider] " + message);
+//      Debug.Log("[Rider] " + message);
     }
 
     /// <summary>

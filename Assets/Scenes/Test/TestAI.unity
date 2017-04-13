@@ -399,11 +399,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114036871263725490, guid: 8682b07efeabbcf47bc84290ceab95e2,
-        type: 2}
-      propertyPath: targets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4091210842085790, guid: 8682b07efeabbcf47bc84290ceab95e2, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -462,20 +457,6 @@ Prefab:
       propertyPath: circuit
       value: 
       objectReference: {fileID: 1511729706}
-    - target: {fileID: 4091210842085790, guid: 8682b07efeabbcf47bc84290ceab95e2, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 114293033215869516, guid: 8682b07efeabbcf47bc84290ceab95e2,
-        type: 2}
-      propertyPath: lookAheadForTargetOffset
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195729680652885506, guid: 8682b07efeabbcf47bc84290ceab95e2,
-        type: 2}
-      propertyPath: m_Speed
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8682b07efeabbcf47bc84290ceab95e2, type: 2}
   m_IsPrefabParent: 0

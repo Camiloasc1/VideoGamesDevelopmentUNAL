@@ -14,14 +14,6 @@ namespace AI.Patrol
             characterControl = GetComponent<AICharacterControl>();
         }
 
-        private void Start()
-        {
-        }
-
-        private void Update()
-        {
-        }
-
         private void OnLoSEnter(Transform target)
         {
             characterControl.target = target;

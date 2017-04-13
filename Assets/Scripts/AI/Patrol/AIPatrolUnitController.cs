@@ -8,6 +8,7 @@ namespace AI.Patrol
     public class AIPatrolUnitController : MonoBehaviour
     {
         private AICharacterControl characterControl;
+        private Transform oldTarget;
 
         private void Awake()
         {
@@ -16,6 +17,7 @@ namespace AI.Patrol
 
         private void OnLoSEnter(Transform target)
         {
+            oldTarget = characterControl.target;
             characterControl.target = target;
         }
 
@@ -25,7 +27,7 @@ namespace AI.Patrol
 
         private void OnLoSExit(Transform target)
         {
-            characterControl.target = null;
+            characterControl.target = oldTarget;
         }
     }
 }

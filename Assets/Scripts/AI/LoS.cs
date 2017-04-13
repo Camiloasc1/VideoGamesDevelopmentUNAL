@@ -23,14 +23,6 @@ namespace AI
             }
         }
 
-        private void Awake()
-        {
-        }
-
-        private void Start()
-        {
-        }
-
         private void OnEnable()
         {
             foreach (var target in targets)

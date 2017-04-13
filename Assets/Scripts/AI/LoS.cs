@@ -10,16 +10,16 @@ namespace AI
         [Tooltip("The eyes offset")] public Vector3 eyesOffset = new Vector3(0, 1.42f, 0);
         [Tooltip("The maximum view distance")] public float viewDistance = 10;
         [Tooltip("The maximum hear distance")] public float hearDistance = 2.5f;
-        [Tooltip("The list of GOs to look for")] public List<GameObject> targets;
+        [Tooltip("The list of targets to look for")] public List<Transform> targets;
 
-        private readonly Dictionary<GameObject, bool> targetWasOnView = new Dictionary<GameObject, bool>();
+        private readonly Dictionary<Transform, bool> targetWasOnView = new Dictionary<Transform, bool>();
 
         private void Reset()
         {
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
-                targets.Add(player);
+                targets.Add(player.transform);
             }
         }
 
@@ -79,9 +79,9 @@ namespace AI
             }
         }
 
-        private bool CanSeeTarget(GameObject target)
+        private bool CanSeeTarget(Transform target)
         {
-            var toTarget = target.transform.position - transform.position;
+            var toTarget = target.position - transform.position;
             var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
 
             // Is near enough
@@ -107,12 +107,12 @@ namespace AI
             return RaycastToTarget(toTarget, target);
         }
 
-        private bool RaycastToTarget(Vector3 toTarget, GameObject target)
+        private bool RaycastToTarget(Vector3 toTarget, Transform target)
         {
             RaycastHit hitInfo;
             if (Physics.Raycast(transform.position + eyesOffset, toTarget, out hitInfo, toTarget.magnitude))
             {
-                return hitInfo.transform.gameObject == target;
+                return hitInfo.transform == target;
             }
             return false;
         }

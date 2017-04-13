@@ -1,16 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
-public class AIPatrolUnitController : MonoBehaviour {
+namespace AI.Patrol
+{
+    [RequireComponent(typeof(AICharacterControl))]
+    public class AIPatrolUnitController : MonoBehaviour
+    {
+        private AICharacterControl characterControl;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        private void Awake()
+        {
+            characterControl = GetComponent<AICharacterControl>();
+        }
+
+        private void Start()
+        {
+        }
+
+        private void Update()
+        {
+        }
+
+        private void OnLoSEnter(Transform target)
+        {
+            characterControl.target = target;
+        }
+
+        private void OnLoSStay(Transform target)
+        {
+        }
+
+        private void OnLoSExit(Transform target)
+        {
+            characterControl.target = null;
+        }
+    }
 }

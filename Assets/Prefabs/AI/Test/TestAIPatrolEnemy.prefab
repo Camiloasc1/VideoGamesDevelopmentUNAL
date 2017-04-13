@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 114453748242638742}
   - component: {fileID: 114161044372846884}
   - component: {fileID: 114036871263725490}
+  - component: {fileID: 114495750014248118}
   m_Layer: 0
   m_Name: TestAIPatrolEnemy
   m_TagString: Untagged
@@ -1326,7 +1327,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1762313595798760}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2498,11 +2499,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914ab72b3588ed4ca181a64c0533590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoV: 30
-  EyesOffset: {x: 0, y: 1.42, z: 0}
-  ViewDistance: 10
-  HearDistance: 2.5
-  LookFor:
+  fieldOfView: 30
+  eyesOffset: {x: 0, y: 1.42, z: 0}
+  viewDistance: 10
+  hearDistance: 2.5
+  targets:
   - {fileID: 0}
 --- !u!114 &114161044372846884
 MonoBehaviour:
@@ -2535,6 +2536,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &114495750014248118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168306068209628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70fc885ab96b404d96d89878ae2745a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136584516295006960
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2578,6 +2590,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -2633,6 +2646,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -2723,6 +2737,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168306068209628}
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 10

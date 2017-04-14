@@ -18,6 +18,10 @@ namespace Enemies
 
         private void OnDrawGizmosSelected()
         {
+            if (!projectileTemplate)
+            {
+                return;
+            }
             var projectile = projectileTemplate.GetComponent<Projectile>();
             if (!projectile)
             {
@@ -38,7 +42,8 @@ namespace Enemies
         {
             var position = transform.position + weaponOffset;
             var rotation = transform.rotation * Quaternion.Euler(0, Random.Range(-shootAngle, shootAngle), 0);
-            Instantiate(projectileTemplate, position, rotation, transform.parent);
+            var projectile = Instantiate(projectileTemplate, position, rotation, transform.parent).GetComponent<Projectile>();
+            projectile.instigator = this;
         }
     }
 }

@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 114891645898850870}
   - component: {fileID: 114904148567146104}
   - component: {fileID: 114055958349943828}
+  - component: {fileID: 114092624751715996}
   m_Layer: 0
   m_Name: TestAIPatrolSlave
   m_TagString: Untagged
@@ -1361,7 +1362,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439625065299216}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -11, y: 0, z: 1}
+  m_LocalPosition: {x: -11, y: 0, z: -1}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children:
   - {fileID: 4730057123273154}
@@ -2055,7 +2056,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397855925284368}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2504,6 +2505,20 @@ MonoBehaviour:
   wanderingTime: 10
   waitTime: 1
   wanderDistance: 5
+--- !u!114 &114092624751715996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439625065299216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bfe23cc5d18244493b388f9d674aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileTemplate: {fileID: 0}
+  weaponOffset: {x: 0, y: 1, z: 0}
+  shootAngle: 10
 --- !u!114 &114878990130894194
 MonoBehaviour:
   m_ObjectHideFlags: 1

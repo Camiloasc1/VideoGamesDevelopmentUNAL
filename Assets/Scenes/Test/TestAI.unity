@@ -433,19 +433,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4513990195884898, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.53267515
+      value: 0.5326752
       objectReference: {fileID: 0}
     - target: {fileID: 4513990195884898, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.07034045
+      value: 0.070340455
       objectReference: {fileID: 0}
     - target: {fileID: 4513990195884898, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613265
+      value: 0.83613276
       objectReference: {fileID: 0}
     - target: {fileID: 4513990195884898, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.11041513
+      value: -0.110415146
       objectReference: {fileID: 0}
     - target: {fileID: 114958250200178540, guid: 76ab72691f508cb4ab87be68942090f3,
         type: 2}
@@ -534,6 +534,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1232114605}
+    - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
   m_IsPrefabParent: 0
@@ -699,6 +703,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1473931901}
+  - component: {fileID: 1473931902}
   m_Layer: 0
   m_Name: Patrol1
   m_TagString: Untagged
@@ -722,6 +727,18 @@ Transform:
   m_Father: {fileID: 1589261452}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473931902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473931900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177d1c06549eaf04d86e1bfe77c852a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onView: 0
 --- !u!1 &1511729704
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +958,10 @@ Prefab:
     - target: {fileID: 114904148567146104, guid: 4b7c61ad7ede3d34d83858b657f95fae,
         type: 2}
       propertyPath: broadcast
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

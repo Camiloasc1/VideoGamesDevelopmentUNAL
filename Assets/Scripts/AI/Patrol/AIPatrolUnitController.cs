@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace AI.Patrol
 {
@@ -99,6 +98,11 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Wandering:
+                    if (chaseTarget != null)
+                    {
+                        state = AIPatrolUnitStates.Chasing;
+                        return true;
+                    }
                     if (navAgent.remainingDistance < navAgent.stoppingDistance)
                     {
                         state = AIPatrolUnitStates.Waiting;
@@ -106,6 +110,11 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Waiting:
+                    if (chaseTarget != null)
+                    {
+                        state = AIPatrolUnitStates.Chasing;
+                        return true;
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

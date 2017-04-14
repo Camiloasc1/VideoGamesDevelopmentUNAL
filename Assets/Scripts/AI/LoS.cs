@@ -58,17 +58,17 @@ namespace AI
             Gizmos.DrawWireSphere(transform.position, hearDistance);
             Gizmos.DrawWireSphere(transform.position, viewDistance);
             Gizmos.DrawLine(transform.position + eyesOffset,
-                transform.position + eyesOffset + Quaternion.AngleAxis(fieldOfView, transform.up) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + eyesOffset + transform.rotation * Quaternion.Euler(0, fieldOfView, 0) *
+                Vector3.forward * viewDistance);
             Gizmos.DrawLine(transform.position + eyesOffset,
-                transform.position + eyesOffset + Quaternion.AngleAxis(-fieldOfView, transform.up) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + eyesOffset + transform.rotation * Quaternion.Euler(0, -fieldOfView, 0) *
+                Vector3.forward * viewDistance);
             Gizmos.DrawLine(transform.position + eyesOffset,
-                transform.position + eyesOffset + Quaternion.AngleAxis(fieldOfView, transform.right) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + eyesOffset + transform.rotation * Quaternion.Euler(fieldOfView, 0, 0) *
+                Vector3.forward * viewDistance);
             Gizmos.DrawLine(transform.position + eyesOffset,
-                transform.position + eyesOffset + Quaternion.AngleAxis(-fieldOfView, transform.right) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + eyesOffset + transform.rotation * Quaternion.Euler(-fieldOfView, 0, 0) *
+                Vector3.forward * viewDistance);
 
             Gizmos.color = Color.green;
             if (Application.isPlaying)

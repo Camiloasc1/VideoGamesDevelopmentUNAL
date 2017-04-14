@@ -27,18 +27,18 @@ namespace Enemies
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position + weaponOffset,
-                transform.position + weaponOffset + Quaternion.AngleAxis(shootAngle, transform.up) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + weaponOffset + transform.rotation * Quaternion.Euler(0, shootAngle, 0) *
+                Vector3.forward * viewDistance);
             Gizmos.DrawLine(transform.position + weaponOffset,
-                transform.position + weaponOffset + Quaternion.AngleAxis(-shootAngle, transform.up) *
-                transform.rotation * Vector3.forward * viewDistance);
+                transform.position + weaponOffset + transform.rotation * Quaternion.Euler(0, -shootAngle, 0) *
+                Vector3.forward * viewDistance);
         }
 
         public void SpawnProjectile()
         {
             var position = transform.position + weaponOffset;
             var rotation = transform.rotation * Quaternion.Euler(0, Random.Range(-shootAngle, shootAngle), 0);
-            Instantiate(projectileTemplate, position, rotation, transform);
+            Instantiate(projectileTemplate, position, rotation, transform.parent);
         }
     }
 }

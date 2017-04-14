@@ -2598,6 +2598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 0.5
   chaseSpeed: 0.75
+  wanderingTime: 10
+  wanderDistance: 5
 --- !u!136 &136584516295006960
 CapsuleCollider:
   m_ObjectHideFlags: 1

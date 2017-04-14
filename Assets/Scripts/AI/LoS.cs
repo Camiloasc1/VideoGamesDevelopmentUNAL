@@ -79,6 +79,11 @@ namespace AI
             }
         }
 
+        /// <summary>
+        /// Detect wether the target is visible (inside the field of view and a clear view to it)
+        /// </summary>
+        /// <param name="target">The target's transform</param>
+        /// <returns>True if visible, False otherwise</returns>
         private bool CanSeeTarget(Transform target)
         {
             var toTarget = target.position - transform.position;
@@ -107,6 +112,12 @@ namespace AI
             return RaycastToTarget(toTarget, target);
         }
 
+        /// <summary>
+        /// Chech if has a clear view of the target
+        /// </summary>
+        /// <param name="toTarget">Relative vector to the target</param>
+        /// <param name="target">The target's transform</param>
+        /// <returns>True if visible, False otherwise</returns>
         private bool RaycastToTarget(Vector3 toTarget, Transform target)
         {
             RaycastHit hitInfo;

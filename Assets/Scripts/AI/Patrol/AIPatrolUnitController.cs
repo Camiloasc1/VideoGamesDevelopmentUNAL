@@ -23,6 +23,9 @@ namespace AI.Patrol
         private AICharacterControl characterControl;
         private PatrolGroup patrolGroup;
 
+        /// <summary>
+        /// True when has a valid target
+        /// </summary>
         public bool hasChaseTarget
         {
             get
@@ -81,6 +84,9 @@ namespace AI.Patrol
 //            chaseTarget = null;
         }
 
+        /// <summary>
+        /// FSM tick
+        /// </summary>
         private void StateUpdate()
         {
             // Update the current state and act accordingly
@@ -94,6 +100,11 @@ namespace AI.Patrol
             OnStateStay(state);
         }
 
+        /// <summary>
+        /// FSM state transitions
+        /// </summary>
+        /// <returns>True when the state changes</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private bool StateTransitions()
         {
             switch (state)
@@ -153,6 +164,12 @@ namespace AI.Patrol
             return false;
         }
 
+        /// <summary>
+        /// Change the state after the specified seconds
+        /// </summary>
+        /// <param name="nextState">The next state to go to</param>
+        /// <param name="waitTime">How much time to wait</param>
+        /// <returns></returns>
         private IEnumerator ChageStateAfterWaitForSeconds(AIPatrolUnitStates nextState, float waitTime)
         {
             yield return new WaitForSeconds(waitTime);

@@ -24,7 +24,7 @@ namespace AI
 
         private void Start()
         {
-            offset = transform.position - target.position;
+            offset = target.InverseTransformDirection(transform.position - target.position);
 
             agent.updateRotation = false;
             agent.updatePosition = true;
@@ -34,7 +34,7 @@ namespace AI
         {
             if (target != null)
             {
-                agent.SetDestination(target.position + offset);
+                agent.SetDestination(target.position + target.TransformDirection(offset));
             }
 
             character.Move(agent.remainingDistance > agent.stoppingDistance ? agent.desiredVelocity : Vector3.zero,

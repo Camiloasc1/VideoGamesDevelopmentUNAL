@@ -457,16 +457,6 @@ Prefab:
       propertyPath: circuit
       value: 
       objectReference: {fileID: 1511729706}
-    - target: {fileID: 114495750014248118, guid: 8682b07efeabbcf47bc84290ceab95e2,
-        type: 2}
-      propertyPath: patrolSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114495750014248118, guid: 8682b07efeabbcf47bc84290ceab95e2,
-        type: 2}
-      propertyPath: chaseSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8682b07efeabbcf47bc84290ceab95e2, type: 2}
   m_IsPrefabParent: 0

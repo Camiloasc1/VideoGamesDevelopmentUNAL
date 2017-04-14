@@ -12,6 +12,7 @@ namespace AI.Patrol
         [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
         [Tooltip("The chase speed")] [Range(0, 1)] public float chaseSpeed = .75f;
         [Tooltip("The wandering time")] public float wanderingTime = 10.0f;
+        [Tooltip("The wandering wait time")] public float waitTime = 1.0f;
         [Tooltip("The maximum wander distance")] public float wanderDistance = 5f;
 
         private Transform patrolTarget;
@@ -89,12 +90,22 @@ namespace AI.Patrol
                     }
                     else if (navAgent.remainingDistance < navAgent.stoppingDistance)
                     {
-                        state = AIPatrolUnitStates.Wandering;
+                        state = AIPatrolUnitStates.Waiting;
                         StartCoroutine(ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Patrol, wanderingTime));
+                        StartCoroutine(ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Wandering, waitTime));
+                        StartCoroutine(
+                            ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Waiting, wanderingTime - waitTime));
                         return true;
                     }
                     break;
                 case AIPatrolUnitStates.Wandering:
+                    if (navAgent.remainingDistance < navAgent.stoppingDistance)
+                    {
+                        state = AIPatrolUnitStates.Waiting;
+                        StartCoroutine(ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Wandering, waitTime));
+                    }
+                    break;
+                case AIPatrolUnitStates.Waiting:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -123,10 +134,15 @@ namespace AI.Patrol
                     characterControl.target = chaseTarget;
                     break;
                 case AIPatrolUnitStates.Lost:
+                    wanderOrigin = characterControl.target.position;
                     characterControl.target = null;
                     break;
                 case AIPatrolUnitStates.Wandering:
-                    wanderOrigin = transform.position;
+                    navAgent.SetDestination(wanderOrigin + UnityEngine.Random.insideUnitSphere * wanderDistance);
+                    break;
+                case AIPatrolUnitStates.Waiting:
+                    navAgent.SetDestination(transform.position);
+                    characterControl.target = null;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -144,10 +160,8 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Lost:
                     break;
                 case AIPatrolUnitStates.Wandering:
-                    if (navAgent.remainingDistance < navAgent.stoppingDistance)
-                    {
-                        navAgent.SetDestination(wanderOrigin + UnityEngine.Random.insideUnitSphere * wanderDistance);
-                    }
+                    break;
+                case AIPatrolUnitStates.Waiting:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -160,6 +174,7 @@ namespace AI.Patrol
         Patrol,
         Chasing,
         Lost,
-        Wandering
+        Wandering,
+        Waiting
     }
 }

@@ -30,11 +30,11 @@ namespace AI.Patrol
         {
             get
             {
-                if (patrolGroup != null)
+                if (patrolGroup)
                 {
-                    return chaseTarget != null && patrolGroup.onView > 0;
+                    return chaseTarget && patrolGroup.onView > 0;
                 }
-                return chaseTarget != null;
+                return chaseTarget;
             }
         }
 

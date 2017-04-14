@@ -6,7 +6,7 @@ namespace AI
 {
     public class LoS : MonoBehaviour
     {
-        [Tooltip("The field of view in degrees")] [Range(0, 360)] public float fieldOfView = 30f;
+        [Tooltip("The field of view in degrees")] [Range(0, 180)] public float fieldOfView = 30f;
         [Tooltip("The eyes offset")] public Vector3 eyesOffset = new Vector3(0, 1.42f, 0);
         [Tooltip("The maximum view distance")] public float viewDistance = 10;
         [Tooltip("The maximum hear distance")] public float hearDistance = 2.5f;
@@ -52,19 +52,23 @@ namespace AI
             }
         }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, hearDistance);
             Gizmos.DrawWireSphere(transform.position, viewDistance);
-            Gizmos.DrawLine(transform.position,
-                transform.position + Quaternion.Euler(0, fieldOfView, 0) * transform.forward * viewDistance);
-            Gizmos.DrawLine(transform.position,
-                transform.position + Quaternion.Euler(0, -fieldOfView, 0) * transform.forward * viewDistance);
-            Gizmos.DrawLine(transform.position,
-                transform.position + Quaternion.Euler(fieldOfView, 0, 0) * transform.forward * viewDistance);
-            Gizmos.DrawLine(transform.position,
-                transform.position + Quaternion.Euler(-fieldOfView, 0, 0) * transform.forward * viewDistance);
+            Gizmos.DrawLine(transform.position + eyesOffset,
+                transform.position + eyesOffset + Quaternion.AngleAxis(fieldOfView, transform.up) *
+                transform.rotation * Vector3.forward * viewDistance);
+            Gizmos.DrawLine(transform.position + eyesOffset,
+                transform.position + eyesOffset + Quaternion.AngleAxis(-fieldOfView, transform.up) *
+                transform.rotation * Vector3.forward * viewDistance);
+            Gizmos.DrawLine(transform.position + eyesOffset,
+                transform.position + eyesOffset + Quaternion.AngleAxis(fieldOfView, transform.right) *
+                transform.rotation * Vector3.forward * viewDistance);
+            Gizmos.DrawLine(transform.position + eyesOffset,
+                transform.position + eyesOffset + Quaternion.AngleAxis(-fieldOfView, transform.right) *
+                transform.rotation * Vector3.forward * viewDistance);
 
             Gizmos.color = Color.green;
             if (Application.isPlaying)

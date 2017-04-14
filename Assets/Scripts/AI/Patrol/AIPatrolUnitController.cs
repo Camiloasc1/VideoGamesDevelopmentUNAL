@@ -31,6 +31,14 @@ namespace AI.Patrol
             {
                 throw new ArgumentOutOfRangeException("wanderingTime", "Wandering time must be positive");
             }
+            if (waitTime < 0)
+            {
+                throw new ArgumentOutOfRangeException("waitTime", "Wait time must be positive");
+            }
+            if (wanderDistance < 0)
+            {
+                throw new ArgumentOutOfRangeException("wanderDistance", "Wander distance time must be positive");
+            }
         }
 
         private void Start()
@@ -40,13 +48,7 @@ namespace AI.Patrol
 
         private void Update()
         {
-            // Update the current state and act accordingly
-            if (UpdateState())
-            {
-                OnStateChange();
-            }
-            // Execute the state
-            ExecuteState();
+            StateUpdate();
         }
 
         private void OnLoSEnter(Transform target)
@@ -63,7 +65,20 @@ namespace AI.Patrol
             chaseTarget = null;
         }
 
-        private bool UpdateState()
+        private void StateUpdate()
+        {
+            // Update the current state and act accordingly
+            var oldSate = state;
+            if (StateTransitions())
+            {
+                OnStateExit(oldSate);
+                OnStateEnter(state);
+            }
+            // Execute the state
+            OnStateStay(state);
+        }
+
+        private bool StateTransitions()
         {
             switch (state)
             {
@@ -125,12 +140,12 @@ namespace AI.Patrol
         private IEnumerator ChageStateAfterWaitForSeconds(AIPatrolUnitStates nextState, float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
+            OnStateExit(state);
             state = nextState;
-            OnStateChange();
-            ExecuteState();
+            OnStateEnter(state);
         }
 
-        private void OnStateChange()
+        private void OnStateEnter(AIPatrolUnitStates state)
         {
             switch (state)
             {
@@ -158,7 +173,26 @@ namespace AI.Patrol
             }
         }
 
-        private void ExecuteState()
+        private void OnStateStay(AIPatrolUnitStates state)
+        {
+            switch (state)
+            {
+                case AIPatrolUnitStates.Patrol:
+                    break;
+                case AIPatrolUnitStates.Chasing:
+                    break;
+                case AIPatrolUnitStates.Lost:
+                    break;
+                case AIPatrolUnitStates.Wandering:
+                    break;
+                case AIPatrolUnitStates.Waiting:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void OnStateExit(AIPatrolUnitStates state)
         {
             switch (state)
             {

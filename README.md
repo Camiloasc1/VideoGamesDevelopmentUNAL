@@ -1,4 +1,4 @@
-# VideoGamesDevelopementUNAL
+# VideoGamesDevelopementUNAL Grupo 6
 Repo for Video Games Developement at UNAL
 
 Team Members:

@@ -237,8 +237,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileTemplate: {fileID: 1680170494595762, guid: 268c7c5a638234e428ebc5e9d513aed7,
     type: 2}
-  weaponOffset: {x: 0, y: 0, z: 0}
+  weaponOffset: {x: 0, y: 1, z: 0}
   shootAngle: 10
+  fireRate: 0.25
+  reloadTime: 2.5
+  ammoPerClip: 10
+  isShooting: 1
 --- !u!4 &255832394
 Transform:
   m_ObjectHideFlags: 0

@@ -79,6 +79,9 @@ namespace Enemies
             return true;
         }
 
+        /// <summary>
+        /// Spawn the projectile
+        /// </summary>
         private void Shoot()
         {
             // Spawn projectile

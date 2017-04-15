@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
+using Enemies;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace AI.Patrol
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(AICharacterControl))]
+    [RequireComponent(typeof(ShooterWeapon))]
     public class AIPatrolUnitController : MonoBehaviour
     {
         [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
@@ -22,6 +25,7 @@ namespace AI.Patrol
         private NavMeshAgent navAgent;
         private AICharacterControl characterControl;
         private PatrolGroup patrolGroup;
+        private ShooterWeapon weapon;
 
         /// <summary>
         /// True when has a valid target
@@ -43,6 +47,7 @@ namespace AI.Patrol
             navAgent = GetComponentInChildren<NavMeshAgent>();
             characterControl = GetComponent<AICharacterControl>();
             patrolGroup = GetComponentInParent<PatrolGroup>();
+            weapon = GetComponent<ShooterWeapon>();
 
             if (wanderingTime < 0)
             {
@@ -213,6 +218,7 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    weapon.TryShoot();
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

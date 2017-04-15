@@ -2550,6 +2550,10 @@ MonoBehaviour:
     type: 2}
   weaponOffset: {x: 0, y: 1, z: 0}
   shootAngle: 10
+  fireRate: 0.25
+  reloadTime: 2.5
+  ammoPerClip: 10
+  isShooting: 0
 --- !u!114 &114334382547760680
 MonoBehaviour:
   m_ObjectHideFlags: 1

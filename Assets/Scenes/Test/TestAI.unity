@@ -479,16 +479,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114499588897747870, guid: 76ab72691f508cb4ab87be68942090f3,
-        type: 2}
-      propertyPath: circuit
-      value: 
-      objectReference: {fileID: 1511729706}
-    - target: {fileID: 114958250200178540, guid: 76ab72691f508cb4ab87be68942090f3,
-        type: 2}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 676107811}
     - target: {fileID: 4513990195884898, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.5326752
@@ -505,6 +495,16 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.110415146
       objectReference: {fileID: 0}
+    - target: {fileID: 114958250200178540, guid: 76ab72691f508cb4ab87be68942090f3,
+        type: 2}
+      propertyPath: targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 676107811}
+    - target: {fileID: 114499588897747870, guid: 76ab72691f508cb4ab87be68942090f3,
+        type: 2}
+      propertyPath: circuit
+      value: 
+      objectReference: {fileID: 1511729706}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
   m_IsPrefabParent: 0
@@ -552,11 +552,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114878990130894194, guid: 4b7c61ad7ede3d34d83858b657f95fae,
+    - target: {fileID: 114904148567146104, guid: 4b7c61ad7ede3d34d83858b657f95fae,
         type: 2}
-      propertyPath: target
+      propertyPath: targets.Array.data[0]
       value: 
-      objectReference: {fileID: 1232114605}
+      objectReference: {fileID: 676107811}
     - target: {fileID: 4670126821448008, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.5326752
@@ -573,23 +573,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.110415146
       objectReference: {fileID: 0}
-    - target: {fileID: 114904148567146104, guid: 4b7c61ad7ede3d34d83858b657f95fae,
+    - target: {fileID: 114878990130894194, guid: 4b7c61ad7ede3d34d83858b657f95fae,
         type: 2}
-      propertyPath: targets.Array.data[0]
+      propertyPath: target
       value: 
-      objectReference: {fileID: 676107811}
+      objectReference: {fileID: 1232114605}
     - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_Name
       value: TestAIPatrolSlave (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114092624751715996, guid: 4b7c61ad7ede3d34d83858b657f95fae,
-        type: 2}
-      propertyPath: shootAngle
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
@@ -1006,19 +997,19 @@ Prefab:
       objectReference: {fileID: 1232114605}
     - target: {fileID: 4670126821448008, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.5326752
+      value: 0.53267515
       objectReference: {fileID: 0}
     - target: {fileID: 4670126821448008, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.070340455
+      value: 0.07034045
       objectReference: {fileID: 0}
     - target: {fileID: 4670126821448008, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613276
+      value: 0.83613265
       objectReference: {fileID: 0}
     - target: {fileID: 4670126821448008, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.110415146
+      value: -0.11041513
       objectReference: {fileID: 0}
     - target: {fileID: 114904148567146104, guid: 4b7c61ad7ede3d34d83858b657f95fae,
         type: 2}

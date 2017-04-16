@@ -21,6 +21,7 @@ namespace Enemies
         {
             if (other.CompareTag("Player"))
             {
+                print("Damage " + Time.timeSinceLevelLoad);
                 // Damage to player
                 Destroy(gameObject);
             }

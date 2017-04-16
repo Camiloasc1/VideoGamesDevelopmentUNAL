@@ -8,7 +8,6 @@ namespace AI.Patrol
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(AICharacterControl))]
-    [RequireComponent(typeof(ShooterWeapon))]
     public class AIPatrolUnitController : MonoBehaviour
     {
         [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
@@ -47,19 +46,27 @@ namespace AI.Patrol
             navAgent = GetComponentInChildren<NavMeshAgent>();
             characterControl = GetComponent<AICharacterControl>();
             patrolGroup = GetComponentInParent<PatrolGroup>();
-            weapon = GetComponent<ShooterWeapon>();
+            if (!patrolGroup)
+            {
+                throw new ArgumentNullException("patrolGroup","PatrolGroup not found in parent");
+            }
+            weapon = GetComponentInChildren<ShooterWeapon>();
+            if(!weapon)
+            {
+                throw new ArgumentNullException("weapon","Weapon not found in children");
+            }
 
             if (wanderingTime < 0)
             {
-                throw new ArgumentOutOfRangeException("wanderingTime", "Wandering time must be positive");
+                throw new ArgumentOutOfRangeException("wanderingTime", "WanderingTime must be positive");
             }
             if (waitTime < 0)
             {
-                throw new ArgumentOutOfRangeException("waitTime", "Wait time must be positive");
+                throw new ArgumentOutOfRangeException("waitTime", "WaitTime must be positive");
             }
             if (wanderDistance < 0)
             {
-                throw new ArgumentOutOfRangeException("wanderDistance", "Wander distance time must be positive");
+                throw new ArgumentOutOfRangeException("wanderDistance", "WanderDistance must be positive");
             }
         }
 

@@ -5,28 +5,33 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    [RequireComponent(typeof(ParticleSystem))]
     public class ShooterWeapon : MonoBehaviour
     {
         [Tooltip("The projectile prefab")] public GameObject projectileTemplate;
-        [Tooltip("The weapon offset")] public Vector3 weaponOffset = new Vector3(0, 1.0f, 0);
+        [Tooltip("The projectile pool")] public Transform projectilePool;
         [Tooltip("The shoot cone size in degrees")] [Range(0, 180)] public float shootAngle = 10f;
         [Tooltip("The delay between shoots")] public float fireRate = 0.25f;
         [Tooltip("The reload time")] public float reloadTime = 2.5f;
         [Tooltip("The ammount of ammo per clip")] public int ammoPerClip = 10;
         [Header("Status")] [Tooltip("The weapon shooting")] public bool isShooting;
 
+        private ParticleSystem gunFlare;
+
         private int clipAmmo;
         private bool canShoot;
 
         private void Awake()
         {
+            gunFlare = GetComponent<ParticleSystem>();
+
             if (!projectileTemplate)
             {
-                throw new ArgumentNullException("projectileTemplate", "Projectile Template can not be null");
+                throw new ArgumentNullException("projectileTemplate", "ProjectileTemplate can not be null");
             }
             if (ammoPerClip < 1)
             {
-                throw new ArgumentOutOfRangeException("ammoPerClip", "Ammo Per Clip time must be > 1");
+                throw new ArgumentOutOfRangeException("ammoPerClip", "AmmoPerClip must be > 1");
             }
         }
 
@@ -52,12 +57,12 @@ namespace Enemies
             var viewDistance = projectile.lifeSpan * projectile.velocity;
 
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position + weaponOffset,
-                transform.position + weaponOffset + transform.rotation * Quaternion.Euler(0, shootAngle, 0) *
-                Vector3.forward * viewDistance);
-            Gizmos.DrawLine(transform.position + weaponOffset,
-                transform.position + weaponOffset + transform.rotation * Quaternion.Euler(0, -shootAngle, 0) *
-                Vector3.forward * viewDistance);
+            Gizmos.DrawLine(transform.position,
+                transform.position + transform.rotation * Quaternion.Euler(0, shootAngle, 0) * Vector3.forward *
+                viewDistance);
+            Gizmos.DrawLine(transform.position,
+                transform.position + transform.rotation * Quaternion.Euler(0, -shootAngle, 0) * Vector3.forward *
+                viewDistance);
         }
 
         /// <summary>
@@ -85,13 +90,14 @@ namespace Enemies
         private void Shoot()
         {
             // Spawn projectile
-            var position = transform.position + weaponOffset;
             var rotation = transform.rotation * Quaternion.Euler(0, Random.Range(-shootAngle, shootAngle), 0);
-            var projectile = Instantiate(projectileTemplate, position, rotation, transform.parent)
+            var projectile = Instantiate(projectileTemplate, transform.position, rotation, projectilePool)
                 .GetComponent<Projectile>();
-            projectile.instigator = this;
+            projectile.weapon = this;
+            projectile.instigator = transform.parent.gameObject;
 
             clipAmmo--;
+            gunFlare.Emit(1);
             StartCoroutine(CanShootDelay());
         }
 

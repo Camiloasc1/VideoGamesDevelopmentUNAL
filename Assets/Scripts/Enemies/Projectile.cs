@@ -8,7 +8,8 @@ namespace Enemies
         [Tooltip("The initial velocity")] public float velocity = 10.0f;
         [Tooltip("The initial life span")] public float lifeSpan = 1.0f;
 
-        [HideInInspector] public ShooterWeapon instigator;
+        [HideInInspector] public ShooterWeapon weapon;
+        [HideInInspector] public GameObject instigator;
 
         private void Start()
         {
@@ -23,9 +24,9 @@ namespace Enemies
                 // Damage to player
                 Destroy(gameObject);
             }
-            else if (other.gameObject == instigator.gameObject)
+            else if (other.CompareTag("Projectile") || other.CompareTag("Enemy"))
             {
-                // Ignore the instigator
+                // Ignore the weapon or othe projectiles
             }
             else
             {

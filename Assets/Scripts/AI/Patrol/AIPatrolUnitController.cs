@@ -24,7 +24,7 @@ namespace AI.Patrol
         private NavMeshAgent navAgent;
         private AICharacterControl characterControl;
         private PatrolGroup patrolGroup;
-        private ShooterWeapon weapon;
+        private Weapon weapon;
 
         /// <summary>
         /// True when has a valid target
@@ -48,12 +48,12 @@ namespace AI.Patrol
             patrolGroup = GetComponentInParent<PatrolGroup>();
             if (!patrolGroup)
             {
-                throw new ArgumentNullException("patrolGroup","PatrolGroup not found in parent");
+                throw new ArgumentNullException("patrolGroup", "PatrolGroup not found in parent");
             }
-            weapon = GetComponentInChildren<ShooterWeapon>();
-            if(!weapon)
+            weapon = GetComponentInChildren<Weapon>();
+            if (!weapon)
             {
-                throw new ArgumentNullException("weapon","Weapon not found in children");
+                throw new ArgumentNullException("weapon", "Weapon not found in children");
             }
 
             if (wanderingTime < 0)
@@ -93,7 +93,6 @@ namespace AI.Patrol
         private void OnLoSExit(Transform target)
         {
             patrolGroup.onView--;
-//            chaseTarget = null;
         }
 
         /// <summary>
@@ -225,7 +224,7 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
-                    weapon.TryShoot();
+                    weapon.TryShoot(chaseTarget.position);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace Enemies
 {
     [RequireComponent(typeof(ParticleSystem))]
-    public class ShooterWeapon : MonoBehaviour
+    public class Weapon : MonoBehaviour
     {
         [Tooltip("The projectile prefab")] public GameObject projectileTemplate;
         [Tooltip("The projectile pool")] public Transform projectilePool;
@@ -20,6 +20,7 @@ namespace Enemies
 
         private int clipAmmo;
         private bool canShoot;
+        private float viewDistance;
 
         private void Awake()
         {
@@ -33,6 +34,9 @@ namespace Enemies
             {
                 throw new ArgumentOutOfRangeException("ammoPerClip", "AmmoPerClip must be > 1");
             }
+
+            var projectile = projectileTemplate.GetComponent<Projectile>();
+            viewDistance = projectile.lifeSpan * projectile.velocity;
         }
 
         private void Update()
@@ -54,15 +58,38 @@ namespace Enemies
             {
                 return;
             }
-            var viewDistance = projectile.lifeSpan * projectile.velocity;
+            var reachDistance = projectile.lifeSpan * projectile.velocity;
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position,
                 transform.position + transform.rotation * Quaternion.Euler(0, shootAngle, 0) * Vector3.forward *
-                viewDistance);
+                reachDistance);
             Gizmos.DrawLine(transform.position,
                 transform.position + transform.rotation * Quaternion.Euler(0, -shootAngle, 0) * Vector3.forward *
-                viewDistance);
+                reachDistance);
+        }
+
+        /// <summary>
+        /// Try to shoot to the target
+        /// </summary>
+        /// <param name="target">Target position</param>
+        /// <returns>True if projectile spawned, False if reloading or in inter-shoot delay or target not reachable</returns>
+        public bool TryShoot(Vector3 target)
+        {
+            var toTarget = target - transform.position;
+            var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
+
+            // Is far enough
+            if (toTargetMagnitude > viewDistance)
+            {
+                return false;
+            }
+            // Is inside the FoV
+            if (Vector3.Angle(transform.forward, toTarget) > shootAngle)
+            {
+                return false;
+            }
+            return TryShoot();
         }
 
         /// <summary>

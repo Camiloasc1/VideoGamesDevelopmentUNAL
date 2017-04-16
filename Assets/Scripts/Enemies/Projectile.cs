@@ -8,7 +8,7 @@ namespace Enemies
         [Tooltip("The initial velocity")] public float velocity = 10.0f;
         [Tooltip("The initial life span")] public float lifeSpan = 1.0f;
 
-        [HideInInspector] public ShooterWeapon weapon;
+        [HideInInspector] public Weapon weapon;
         [HideInInspector] public GameObject instigator;
 
         private void Start()

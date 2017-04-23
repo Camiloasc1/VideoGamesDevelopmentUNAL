@@ -2534,7 +2534,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &82706202920165292
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2681,6 +2681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 0.5
   chaseSpeed: 0.75
+  shootDistance: 5
   wanderingTime: 10
   waitTime: 1
   wanderDistance: 5
@@ -2733,8 +2734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bfe23cc5d18244493b388f9d674aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileTemplate: {fileID: 1680170494595762, guid: 268c7c5a638234e428ebc5e9d513aed7,
+  projectileTemplate: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
     type: 2}
+  projectilePool: {fileID: 0}
   shootAngle: 10
   fireRate: 0.25
   reloadTime: 2.5
@@ -2752,6 +2754,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4099078469523758}
+  moveOnUpdate: 1
+  useStartOffset: 0
+  offset: {x: 0, y: 0, z: 0}
+  useRelativePosition: 0
+  useRelativeRotation: 0
 --- !u!114 &114958250200178540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2965,7 +2972,7 @@ NavMeshAgent:
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.2
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

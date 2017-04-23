@@ -12,12 +12,14 @@ namespace AI.Patrol
     {
         [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
         [Tooltip("The chase speed")] [Range(0, 1)] public float chaseSpeed = .75f;
-        [Tooltip("The wandering time")] public float wanderingTime = 10.0f;
-        [Tooltip("The wandering wait time")] public float waitTime = 1.0f;
+        [Tooltip("The shoot distance")] public float shootDistance = 5f;
+        [Tooltip("The wandering time")] public float wanderingTime = 10f;
+        [Tooltip("The wandering wait time")] public float waitTime = 1f;
         [Tooltip("The maximum wander distance")] public float wanderDistance = 5f;
 
         private Transform patrolTarget;
         private Transform chaseTarget;
+        private float stoppingDistance;
         private Vector3 wanderOrigin;
         private AIPatrolUnitStates state;
 
@@ -73,6 +75,7 @@ namespace AI.Patrol
         private void Start()
         {
             patrolTarget = characterControl.target;
+            stoppingDistance = navAgent.stoppingDistance;
         }
 
         private void Update()
@@ -160,6 +163,7 @@ namespace AI.Patrol
                     {
                         state = AIPatrolUnitStates.Waiting;
                         StartCoroutine(ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Wandering, waitTime));
+                        return true;
                     }
                     break;
                 case AIPatrolUnitStates.Waiting:
@@ -199,7 +203,10 @@ namespace AI.Patrol
                     break;
                 case AIPatrolUnitStates.Chasing:
                     navAgent.speed = chaseSpeed;
+                    navAgent.stoppingDistance = shootDistance;
                     characterControl.target = chaseTarget;
+                    characterControl.useRelativePosition = false;
+                    characterControl.useRelativeRotation = false;
                     break;
                 case AIPatrolUnitStates.Lost:
                     wanderOrigin = characterControl.target.position;
@@ -224,6 +231,13 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    if (navAgent.velocity.magnitude < 0.1f)
+                    {
+                        var targetRotation = Quaternion.LookRotation(chaseTarget.position - transform.position);
+                        var deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
+                            navAgent.angularSpeed * Time.deltaTime);
+                        transform.rotation = deltaRotation;
+                    }
                     weapon.TryShoot(chaseTarget.position);
                     break;
                 case AIPatrolUnitStates.Lost:
@@ -244,6 +258,10 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    navAgent.stoppingDistance = stoppingDistance;
+                    characterControl.useRelativePosition = true;
+                    characterControl.useRelativeRotation = true;
+                    characterControl.MoveToTarget();
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

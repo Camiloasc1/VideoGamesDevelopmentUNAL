@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections;
+using Enemies;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace AI.Patrol
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(AICharacterControl))]
     public class AIPatrolUnitController : MonoBehaviour
     {
         [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
         [Tooltip("The chase speed")] [Range(0, 1)] public float chaseSpeed = .75f;
-        [Tooltip("The wandering time")] public float wanderingTime = 10.0f;
-        [Tooltip("The wandering wait time")] public float waitTime = 1.0f;
+        [Tooltip("The shoot distance")] public float shootDistance = 5f;
+        [Tooltip("The wandering time")] public float wanderingTime = 10f;
+        [Tooltip("The wandering wait time")] public float waitTime = 1f;
         [Tooltip("The maximum wander distance")] public float wanderDistance = 5f;
 
         private Transform patrolTarget;
         private Transform chaseTarget;
+        private float stoppingDistance;
         private Vector3 wanderOrigin;
         private AIPatrolUnitStates state;
 
         private NavMeshAgent navAgent;
         private AICharacterControl characterControl;
         private PatrolGroup patrolGroup;
+        private Weapon weapon;
 
         /// <summary>
         /// True when has a valid target
@@ -30,11 +35,11 @@ namespace AI.Patrol
         {
             get
             {
-                if (patrolGroup != null)
+                if (patrolGroup)
                 {
-                    return chaseTarget != null && patrolGroup.onView > 0;
+                    return chaseTarget && patrolGroup.onView > 0;
                 }
-                return chaseTarget != null;
+                return chaseTarget;
             }
         }
 
@@ -43,24 +48,34 @@ namespace AI.Patrol
             navAgent = GetComponentInChildren<NavMeshAgent>();
             characterControl = GetComponent<AICharacterControl>();
             patrolGroup = GetComponentInParent<PatrolGroup>();
+            if (!patrolGroup)
+            {
+                throw new ArgumentNullException("patrolGroup", "PatrolGroup not found in parent");
+            }
+            weapon = GetComponentInChildren<Weapon>();
+            if (!weapon)
+            {
+                throw new ArgumentNullException("weapon", "Weapon not found in children");
+            }
 
             if (wanderingTime < 0)
             {
-                throw new ArgumentOutOfRangeException("wanderingTime", "Wandering time must be positive");
+                throw new ArgumentOutOfRangeException("wanderingTime", "WanderingTime must be positive");
             }
             if (waitTime < 0)
             {
-                throw new ArgumentOutOfRangeException("waitTime", "Wait time must be positive");
+                throw new ArgumentOutOfRangeException("waitTime", "WaitTime must be positive");
             }
             if (wanderDistance < 0)
             {
-                throw new ArgumentOutOfRangeException("wanderDistance", "Wander distance time must be positive");
+                throw new ArgumentOutOfRangeException("wanderDistance", "WanderDistance must be positive");
             }
         }
 
         private void Start()
         {
             patrolTarget = characterControl.target;
+            stoppingDistance = navAgent.stoppingDistance;
         }
 
         private void Update()
@@ -81,7 +96,6 @@ namespace AI.Patrol
         private void OnLoSExit(Transform target)
         {
             patrolGroup.onView--;
-//            chaseTarget = null;
         }
 
         /// <summary>
@@ -149,6 +163,7 @@ namespace AI.Patrol
                     {
                         state = AIPatrolUnitStates.Waiting;
                         StartCoroutine(ChageStateAfterWaitForSeconds(AIPatrolUnitStates.Wandering, waitTime));
+                        return true;
                     }
                     break;
                 case AIPatrolUnitStates.Waiting:
@@ -188,7 +203,10 @@ namespace AI.Patrol
                     break;
                 case AIPatrolUnitStates.Chasing:
                     navAgent.speed = chaseSpeed;
+                    navAgent.stoppingDistance = shootDistance;
                     characterControl.target = chaseTarget;
+                    characterControl.useRelativePosition = false;
+                    characterControl.useRelativeRotation = false;
                     break;
                 case AIPatrolUnitStates.Lost:
                     wanderOrigin = characterControl.target.position;
@@ -213,6 +231,14 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    if (navAgent.velocity.magnitude < 0.1f)
+                    {
+                        var targetRotation = Quaternion.LookRotation(chaseTarget.position - transform.position);
+                        var deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
+                            navAgent.angularSpeed * Time.deltaTime);
+                        transform.rotation = deltaRotation;
+                    }
+                    weapon.TryShoot(chaseTarget.position);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;
@@ -232,6 +258,10 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    navAgent.stoppingDistance = stoppingDistance;
+                    characterControl.useRelativePosition = true;
+                    characterControl.useRelativeRotation = true;
+                    characterControl.MoveToTarget();
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

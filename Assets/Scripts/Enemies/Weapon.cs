@@ -77,6 +77,7 @@ namespace Enemies
         public bool TryShoot(Vector3 target)
         {
             var toTarget = target - transform.position;
+            toTarget.y = 0;
             var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
 
             // Is far enough

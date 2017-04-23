@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c4f03b7296bfd4c9d44823daa365a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 100
+  velocity: 35
   lifeSpan: 1
   weapon: {fileID: 0}
   instigator: {fileID: 0}

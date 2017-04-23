@@ -479,6 +479,12 @@ Prefab:
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 1091945919}
+    - target: {fileID: 114601909760943594, guid: 76ab72691f508cb4ab87be68942090f3,
+        type: 2}
+      propertyPath: projectileTemplate
+      value: 
+      objectReference: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
   m_IsPrefabParent: 0
@@ -565,6 +571,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114939397501398080, guid: 4b7c61ad7ede3d34d83858b657f95fae,
+        type: 2}
+      propertyPath: projectileTemplate
+      value: 
+      objectReference: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
   m_IsPrefabParent: 0
@@ -1017,6 +1029,12 @@ Prefab:
       propertyPath: keepRelative
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114939397501398080, guid: 4b7c61ad7ede3d34d83858b657f95fae,
+        type: 2}
+      propertyPath: projectileTemplate
+      value: 
+      objectReference: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
   m_IsPrefabParent: 0

@@ -8,7 +8,7 @@ namespace Enemies
     [RequireComponent(typeof(ParticleSystem))]
     public class Weapon : MonoBehaviour
     {
-        [Tooltip("The projectile prefab")] public GameObject projectileTemplate;
+        [Tooltip("The projectile prefab")] public Projectile projectileTemplate;
         [Tooltip("The projectile pool")] public Transform projectilePool;
         [Tooltip("The shoot cone size in degrees")] [Range(0, 180)] public float shootAngle = 10f;
         [Tooltip("The delay between shoots")] public float fireRate = 0.25f;
@@ -20,7 +20,11 @@ namespace Enemies
 
         private int clipAmmo;
         private bool canShoot;
-        private float viewDistance;
+
+        public float ViewDistance
+        {
+            get { return projectileTemplate.lifeSpan * projectileTemplate.velocity; }
+        }
 
         private void Awake()
         {
@@ -34,9 +38,6 @@ namespace Enemies
             {
                 throw new ArgumentOutOfRangeException("ammoPerClip", "AmmoPerClip must be > 1");
             }
-
-            var projectile = projectileTemplate.GetComponent<Projectile>();
-            viewDistance = projectile.lifeSpan * projectile.velocity;
         }
 
         private void Update()
@@ -53,20 +54,14 @@ namespace Enemies
             {
                 return;
             }
-            var projectile = projectileTemplate.GetComponent<Projectile>();
-            if (!projectile)
-            {
-                return;
-            }
-            var reachDistance = projectile.lifeSpan * projectile.velocity;
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position,
                 transform.position + transform.rotation * Quaternion.Euler(0, shootAngle, 0) * Vector3.forward *
-                reachDistance);
+                ViewDistance);
             Gizmos.DrawLine(transform.position,
                 transform.position + transform.rotation * Quaternion.Euler(0, -shootAngle, 0) * Vector3.forward *
-                reachDistance);
+                ViewDistance);
         }
 
         /// <summary>
@@ -81,7 +76,7 @@ namespace Enemies
             var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
 
             // Is far enough
-            if (toTargetMagnitude > viewDistance)
+            if (toTargetMagnitude > ViewDistance)
             {
                 return false;
             }

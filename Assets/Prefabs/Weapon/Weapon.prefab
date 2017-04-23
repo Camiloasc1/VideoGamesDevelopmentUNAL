@@ -171,8 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bfe23cc5d18244493b388f9d674aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileTemplate: {fileID: 1680170494595762, guid: 268c7c5a638234e428ebc5e9d513aed7,
+  projectileTemplate: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
     type: 2}
+  projectilePool: {fileID: 0}
   shootAngle: 10
   fireRate: 0.25
   reloadTime: 2.5

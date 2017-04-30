@@ -23,7 +23,7 @@ namespace Enemies
 
         public float ViewDistance
         {
-            get { return projectileTemplate.lifeSpan * projectileTemplate.velocity; }
+            get { return projectileTemplate.lifeSpan * projectileTemplate.speed; }
         }
 
         private void Awake()

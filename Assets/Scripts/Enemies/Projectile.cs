@@ -11,23 +11,23 @@ namespace Enemies
         [HideInInspector] public Weapon weapon;
         [HideInInspector] public GameObject instigator;
 
-        private Rigidbody rigidbody;
+        private Rigidbody rb;
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
         {
-            rigidbody.velocity = transform.forward * speed;
+            rb.velocity = transform.forward * speed;
             Destroy(gameObject, lifeSpan);
         }
 
         private void FixedUpdate()
         {
             // Check impacts for high speed projectiles
-            var sweepHits = rigidbody.SweepTestAll(transform.forward, speed * Time.fixedDeltaTime);
+            var sweepHits = rb.SweepTestAll(transform.forward, speed * Time.fixedDeltaTime);
             foreach (var hit in sweepHits)
             {
                 OnTriggerEnter(hit.collider);

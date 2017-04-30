@@ -27,7 +27,7 @@ CGPROGRAM
 #pragma exclude_renderers nomrt
 
 #include "UnityCG.cginc"
-#include "UnityDeferredLibrary.cginc"
+#include "LanternDeferredLibrary.cginc"
 #include "UnityPBSLighting.cginc"
 #include "UnityStandardUtils.cginc"
 #include "UnityGBuffer.cginc"
@@ -46,7 +46,7 @@ half4 CalculateLight (unity_v2f_deferred i)
 	UNITY_INITIALIZE_OUTPUT(UnityLight, light);
 	UnityDeferredCalculateLightParams (i, wpos, uv, light.dir, atten, fadeDist);
 
-	light.color = _LightColor.rgb;
+	light.color = _LightColor.rgb * atten;
 
 	// unpack Gbuffer
 	half4 gbuffer0 = tex2D (_CameraGBufferTexture0, uv);

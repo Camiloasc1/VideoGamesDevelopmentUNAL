@@ -15,14 +15,18 @@ namespace Player
 
         public bool Damage(float damage)
         {
-            Health -= damage;
-            print(Health);
-            if (Health <= 0f)
+            if (Health > 0f)
             {
-                Die();
-                return true;
+                Health -= damage;
+                print(Health);
+                if (Health <= 0f)
+                {
+                    Die();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            return true;
         }
 
         private void Die()

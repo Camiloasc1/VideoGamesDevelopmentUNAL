@@ -21,6 +21,7 @@ namespace UI
         void Update()
         {
             baseColor.a = 1f - playerCharacter.Health / playerCharacter.maxHealth;
+            baseColor.a = Mathf.Clamp01(baseColor.a);
             GetComponent<Image>().material.color = baseColor;
         }
 

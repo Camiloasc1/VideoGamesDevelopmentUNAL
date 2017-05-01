@@ -38,7 +38,7 @@ namespace UI
 
         private void OnPlayerRecieveDamage(float damage)
         {
-            baseColor.a = 1f - playerCharacter.Health / playerCharacter.maxHealth;
+            baseColor.a = 1f - playerCharacter.HealthPercent;
             baseColor.a = Mathf.Clamp01(baseColor.a);
             image.material.color = baseColor;
         }

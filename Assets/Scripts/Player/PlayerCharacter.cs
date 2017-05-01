@@ -14,6 +14,11 @@ namespace Player
 
         public float Health { get; private set; }
 
+        public float HealthPercent
+        {
+            get { return Health / maxHealth; }
+        }
+
         private void Start()
         {
             Health = maxHealth;

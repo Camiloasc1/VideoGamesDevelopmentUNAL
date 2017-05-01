@@ -8,7 +8,6 @@ namespace Player
 
         public float Health { get; private set; }
 
-        // Use this for initialization
         private void Start()
         {
             Health = maxHealth;

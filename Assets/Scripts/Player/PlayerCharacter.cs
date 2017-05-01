@@ -19,7 +19,7 @@ namespace Player
             Health = maxHealth;
         }
 
-        public bool Damage(float damage)
+        public void Damage(float damage)
         {
             if (Health > 0f)
             {
@@ -29,11 +29,8 @@ namespace Player
                 {
                     Die();
                     OnPlayerDeath();
-                    return true;
                 }
-                return false;
             }
-            return true;
         }
 
         private void Die()

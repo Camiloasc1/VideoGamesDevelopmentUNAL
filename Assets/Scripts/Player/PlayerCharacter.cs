@@ -6,6 +6,12 @@ namespace Player
     {
         [Tooltip("The player's max health")] public float maxHealth = 5f;
 
+        public delegate void OnPlayerRecieveDamage_(float damage);
+        public delegate void OnPlayerDeath_();
+
+        public event OnPlayerRecieveDamage_ OnPlayerRecieveDamage = delegate { };
+        public event OnPlayerDeath_ OnPlayerDeath = delegate { };
+
         public float Health { get; private set; }
 
         private void Start()
@@ -18,9 +24,11 @@ namespace Player
             if (Health > 0f)
             {
                 Health -= damage;
+                OnPlayerRecieveDamage(damage);
                 if (Health <= 0f)
                 {
                     Die();
+                    OnPlayerDeath();
                     return true;
                 }
                 return false;

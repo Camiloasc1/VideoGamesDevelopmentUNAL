@@ -23,16 +23,23 @@ namespace UI
             baseColor = image.material.color;
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            baseColor.a = 1f - playerCharacter.Health / playerCharacter.maxHealth;
-            baseColor.a = Mathf.Clamp01(baseColor.a);
+            playerCharacter.OnPlayerRecieveDamage += OnPlayerRecieveDamage;
+        }
+
+        private void OnDisable()
+        {
+            playerCharacter.OnPlayerRecieveDamage -= OnPlayerRecieveDamage;
+
+            baseColor.a = 0f;
             image.material.color = baseColor;
         }
 
-        private void OnDestroy()
+        private void OnPlayerRecieveDamage(float damage)
         {
-            baseColor.a = 0f;
+            baseColor.a = 1f - playerCharacter.Health / playerCharacter.maxHealth;
+            baseColor.a = Mathf.Clamp01(baseColor.a);
             image.material.color = baseColor;
         }
     }

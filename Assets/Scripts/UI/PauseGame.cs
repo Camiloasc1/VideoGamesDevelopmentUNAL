@@ -1,31 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.ImageEffects;
 
-public class PauseGame : MonoBehaviour
+namespace UI
 {
-	public Transform pauseCanvas;
+    public class PauseGame : MonoBehaviour
+    {
+        public Transform pauseCanvas;
+        private BlurOptimized cameraBlur;
 
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			togglePause ();
-		}
-	}
+        private void Awake()
+        {
+            cameraBlur = Camera.main.GetComponent<BlurOptimized>();
+        }
 
-	public void togglePause ()
-	{
-		if (pauseCanvas.gameObject.activeInHierarchy == false) {
+        private void Update()
+        {
+            if (CrossPlatformInputManager.GetButtonDown("Pause"))
+            {
+                TogglePause();
+            }
+        }
 
-			pauseCanvas.gameObject.SetActive (true);
-			Time.timeScale = 0;
-			Camera.main.GetComponent<BlurOptimized> ().enabled = true;
-		} else {
-			pauseCanvas.gameObject.SetActive (false);
-			Time.timeScale = 1;
-			Camera.main.GetComponent<BlurOptimized> ().enabled = false;
-		}
-	}
+        public void TogglePause()
+        {
+            if (pauseCanvas.gameObject.activeInHierarchy == false)
+            {
+                pauseCanvas.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+                cameraBlur.enabled = true;
+            }
+            else
+            {
+                pauseCanvas.gameObject.SetActive(false);
+                Time.timeScale = 1f;
+                cameraBlur.enabled = false;
+            }
+        }
+    }
 }

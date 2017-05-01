@@ -9,15 +9,15 @@ namespace UI
 
         public void ToggleOptions()
         {
-            if (optionsPanel.gameObject.activeInHierarchy == false)
+            if (optionsPanel.gameObject.activeInHierarchy)
             {
-                pausePanel.gameObject.SetActive(false);
-                optionsPanel.gameObject.SetActive(true);
+                pausePanel.gameObject.SetActive(true);
+                optionsPanel.gameObject.SetActive(false);
             }
             else
             {
-                optionsPanel.gameObject.SetActive(false);
-                pausePanel.gameObject.SetActive(true);
+                pausePanel.gameObject.SetActive(false);
+                optionsPanel.gameObject.SetActive(true);
             }
         }
     }

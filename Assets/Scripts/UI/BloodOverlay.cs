@@ -4,31 +4,36 @@ using UnityEngine.UI;
 
 namespace UI
 {
+    [RequireComponent(typeof (Image))]
     public class BloodOverlay : MonoBehaviour
     {
         private Color baseColor;
         private PlayerCharacter playerCharacter;
+        private Image image;
 
-        // Use this for initialization
-        void Start()
+        private void Awake()
         {
             playerCharacter = GameObject.FindWithTag("Player").GetComponent<PlayerCharacter>();
-            baseColor = GetComponent<Image>().material.color;
-            print(baseColor);
+
+            image = GetComponent<Image>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Start()
+        {
+            baseColor = image.material.color;
+        }
+
+        private void Update()
         {
             baseColor.a = 1f - playerCharacter.Health / playerCharacter.maxHealth;
             baseColor.a = Mathf.Clamp01(baseColor.a);
-            GetComponent<Image>().material.color = baseColor;
+            image.material.color = baseColor;
         }
 
         private void OnDestroy()
         {
             baseColor.a = 0f;
-            GetComponent<Image>().material.color = baseColor;
+            image.material.color = baseColor;
         }
     }
 }

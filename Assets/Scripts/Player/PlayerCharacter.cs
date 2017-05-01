@@ -18,7 +18,6 @@ namespace Player
             if (Health > 0f)
             {
                 Health -= damage;
-                print(Health);
                 if (Health <= 0f)
                 {
                     Die();

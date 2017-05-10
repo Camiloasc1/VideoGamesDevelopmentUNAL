@@ -9,11 +9,24 @@ namespace AI
     public class AICharacterControl : MonoBehaviour
     {
         [Tooltip("The target transform to aim for")] public Transform target; // target to aim for
-
-        private Vector3 offset;
+        [Tooltip("Move to target on Update()")] public bool moveOnUpdate;
+        [Tooltip("Initialize the offset at Start()")] public bool useStartOffset;
+        [Tooltip("The current offset")] public Vector3 offset;
+        [Tooltip("When to use the relative position")] public bool useRelativePosition;
+        [Tooltip("When to use the relative rotation")] public bool useRelativeRotation;
 
         private NavMeshAgent agent; // the navmesh agent required for the path finding
         private ThirdPersonCharacter character; // the character we are controlling
+
+        public Vector3 Destination
+        {
+            get
+            {
+                return target.position + (useRelativePosition
+                           ? (useRelativeRotation ? target.TransformDirection(offset) : offset)
+                           : Vector3.zero);
+            }
+        }
 
         private void Awake()
         {
@@ -24,7 +37,10 @@ namespace AI
 
         private void Start()
         {
-            offset = target.InverseTransformDirection(transform.position - target.position);
+            if (useStartOffset)
+            {
+                offset = target.InverseTransformDirection(transform.position - target.position);
+            }
 
             agent.updateRotation = false;
             agent.updatePosition = true;
@@ -32,13 +48,21 @@ namespace AI
 
         private void Update()
         {
-            if (target != null)
+            if (moveOnUpdate)
             {
-                agent.SetDestination(target.position + target.TransformDirection(offset));
+                MoveToTarget();
             }
 
             character.Move(agent.remainingDistance > agent.stoppingDistance ? agent.desiredVelocity : Vector3.zero,
                 false, false);
+        }
+
+        public void MoveToTarget()
+        {
+            if (target != null)
+            {
+                agent.SetDestination(Destination);
+            }
         }
     }
 }

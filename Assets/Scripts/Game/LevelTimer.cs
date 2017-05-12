@@ -8,6 +8,16 @@ namespace Game
 
         public float TimeLeft { get; private set; }
 
+        public string TimeString
+        {
+            get
+            {
+                var min = Mathf.FloorToInt(TimeLeft / 60f);
+                var sec = Mathf.FloorToInt(TimeLeft) - min * 60;
+                return string.Format("{0:00}:{1:00}", min, sec);
+            }
+        }
+
         private void Start()
         {
             TimeLeft = timeLimit;
@@ -20,6 +30,7 @@ namespace Game
                 TimeLeft -= Time.deltaTime;
                 if (TimeLeft <= 0)
                 {
+                    TimeLeft = 0;
                     print("You loose!");
                 }
             }

@@ -23,6 +23,17 @@ namespace AI
             }
         }
 
+        private void Start()
+        {
+            var lantern = GetComponentInChildren<Light>();
+            if (lantern)
+            {
+                lantern.type = LightType.Spot;
+                lantern.spotAngle = fieldOfView * 2;
+                lantern.range = viewDistance;
+            }
+        }
+
         private void OnEnable()
         {
             foreach (var target in targets)

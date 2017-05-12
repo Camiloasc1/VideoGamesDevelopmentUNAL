@@ -15,7 +15,14 @@ namespace Game
 
         private void Update()
         {
-            TimeLeft -= Time.deltaTime;
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                if (TimeLeft <= 0)
+                {
+                    print("You loose!");
+                }
+            }
         }
     }
 }

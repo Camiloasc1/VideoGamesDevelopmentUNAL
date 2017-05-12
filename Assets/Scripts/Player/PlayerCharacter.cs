@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game;
+using UnityEngine;
 
 namespace Player
 {
@@ -40,7 +41,7 @@ namespace Player
 
         private void Die()
         {
-            throw new System.NotImplementedException();
+            GameController.GameMode.Defeat();
         }
     }
 }

@@ -9,8 +9,7 @@ namespace Game
         {
             if (other.CompareTag("Player"))
             {
-                print("Victory!");
-                throw new System.NotImplementedException();
+                GameController.GameMode.Victory();
             }
         }
     }

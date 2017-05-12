@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game
 {
@@ -31,7 +32,7 @@ namespace Game
                 if (TimeLeft <= 0)
                 {
                     TimeLeft = 0;
-                    print("You loose!");
+                    GameController.GameMode.Defeat();
                 }
             }
         }

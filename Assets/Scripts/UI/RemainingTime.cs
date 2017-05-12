@@ -13,12 +13,7 @@ namespace UI
 
         private void Awake()
         {
-            var gameController = GameObject.FindGameObjectWithTag("GameController");
-            if (!gameController)
-            {
-                throw new ArgumentNullException("gameController", "GameController not found");
-            }
-            levelTimer = gameController.GetComponent<LevelTimer>();
+            levelTimer = GameController.Instance.GetComponent<LevelTimer>();
             if (!levelTimer)
             {
                 throw new ArgumentNullException("levelTimer", "levelTimer not found in GameController");

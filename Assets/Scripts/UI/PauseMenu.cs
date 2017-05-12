@@ -6,7 +6,7 @@ namespace UI
     public class PauseMenu : MonoBehaviour
     {
         public Transform pausePanel;
-        public Transform optionsPanel;
+        public Transform settingsPanel;
 
         public void SetViewMain()
         {
@@ -15,7 +15,7 @@ namespace UI
 
         public void SetViewOptions()
         {
-            SetView(Views.Options);
+            SetView(Views.Settings);
         }
 
         private void SetView(Views view)
@@ -24,11 +24,11 @@ namespace UI
             {
                 case Views.Main:
                     pausePanel.gameObject.SetActive(true);
-                    optionsPanel.gameObject.SetActive(false);
+                    settingsPanel.gameObject.SetActive(false);
                     break;
-                case Views.Options:
+                case Views.Settings:
                     pausePanel.gameObject.SetActive(false);
-                    optionsPanel.gameObject.SetActive(true);
+                    settingsPanel.gameObject.SetActive(true);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("view", view, null);
@@ -39,6 +39,6 @@ namespace UI
     public enum Views
     {
         Main,
-        Options
+        Settings
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace UI
 {
@@ -7,18 +8,37 @@ namespace UI
         public Transform pausePanel;
         public Transform optionsPanel;
 
-        public void ToggleOptions()
+        public void SetViewMain()
         {
-            if (optionsPanel.gameObject.activeInHierarchy)
+            SetView(Views.Main);
+        }
+
+        public void SetViewOptions()
+        {
+            SetView(Views.Options);
+        }
+
+        private void SetView(Views view)
+        {
+            switch (view)
             {
-                pausePanel.gameObject.SetActive(true);
-                optionsPanel.gameObject.SetActive(false);
-            }
-            else
-            {
-                pausePanel.gameObject.SetActive(false);
-                optionsPanel.gameObject.SetActive(true);
+                case Views.Main:
+                    pausePanel.gameObject.SetActive(true);
+                    optionsPanel.gameObject.SetActive(false);
+                    break;
+                case Views.Options:
+                    pausePanel.gameObject.SetActive(false);
+                    optionsPanel.gameObject.SetActive(true);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("view", view, null);
             }
         }
+    }
+
+    public enum Views
+    {
+        Main,
+        Options
     }
 }

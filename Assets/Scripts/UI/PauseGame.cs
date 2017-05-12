@@ -6,7 +6,7 @@ namespace UI
 {
     public class PauseGame : MonoBehaviour
     {
-        public Transform pauseCanvas;
+        public Transform pauseMenuCanvas;
         private BlurOptimized cameraBlur;
 
         private void Awake()
@@ -24,15 +24,16 @@ namespace UI
 
         public void TogglePause()
         {
-            if (pauseCanvas.gameObject.activeInHierarchy)
+            if (pauseMenuCanvas.gameObject.activeInHierarchy)
             {
-                pauseCanvas.gameObject.SetActive(false);
+                pauseMenuCanvas.gameObject.SetActive(false);
                 Time.timeScale = 1f;
                 cameraBlur.enabled = false;
             }
             else
             {
-                pauseCanvas.gameObject.SetActive(true);
+                pauseMenuCanvas.gameObject.SetActive(true);
+                pauseMenuCanvas.GetComponent<PauseMenu>().SetViewMain();
                 Time.timeScale = 0f;
                 cameraBlur.enabled = true;
             }

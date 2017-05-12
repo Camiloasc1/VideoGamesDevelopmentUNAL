@@ -18,7 +18,6 @@ namespace UI.Settings
             if (resolutions.Length == 0)
             {
                 // Not supported by platform
-                gameObject.SetActive(false);
                 transform.parent.gameObject.SetActive(false);
                 return;
             }

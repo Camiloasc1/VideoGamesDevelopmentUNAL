@@ -890,6 +890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbf621f5f14f744695b55d1ca53a752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &951497573 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1333221704882530, guid: d69b250cfde3ed949894180f4a387fe7,
+    type: 2}
+  m_PrefabInternal: {fileID: 8099995}
 --- !u!1 &1055167957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ab9e5d812d87d4e9bab1704d1e3b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuCanvas: {fileID: 2056070723}
+  pauseMenuCanvas: {fileID: 951497573}
 --- !u!4 &1206755217
 Transform:
   m_ObjectHideFlags: 0

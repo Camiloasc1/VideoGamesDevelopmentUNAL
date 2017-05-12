@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 namespace UI
 {
@@ -7,6 +8,25 @@ namespace UI
     {
         public Transform pausePanel;
         public Transform settingsPanel;
+        private BlurOptimized cameraBlur;
+
+        private void Awake()
+        {
+            cameraBlur = Camera.main.GetComponent<BlurOptimized>();
+        }
+
+        private void OnEnable()
+        {
+            cameraBlur.enabled = true;
+            Time.timeScale = 0f;
+            SetViewMain();
+        }
+
+        private void OnDisable()
+        {
+            cameraBlur.enabled = false;
+            Time.timeScale = 1f;
+        }
 
         public void SetViewMain()
         {

@@ -13,21 +13,26 @@ namespace UI.Settings
         private void Awake()
         {
             dropdown = GetComponent<Dropdown>();
-
-            resolutions = Screen.resolutions;
-            if (resolutions.Length == 0)
-            {
-                // Not supported by platform
-                transform.parent.gameObject.SetActive(false);
-                return;
-            }
-            resolutions = resolutions.Distinct().ToArray();
         }
 
-        private void OnEnable()
+        private void Start()
+        {
+            if (!FillAvailableResolutions())
+            {
+                return;
+            }
+
+            FillResolutionOptions();
+        }
+
+        public void OnValueChaged(int value)
+        {
+            Screen.SetResolution(resolutions[value].width, resolutions[value].height, true);
+        }
+
+        private void FillResolutionOptions()
         {
             dropdown.options.Clear();
-            var found = false;
             for (var i = 0; i < resolutions.Length; i++)
             {
                 var resolution = resolutions[i];
@@ -38,18 +43,22 @@ namespace UI.Settings
                 if (Screen.currentResolution.Equals(resolution))
                 {
                     dropdown.value = i;
-                    found = true;
                 }
             }
-            if (!found)
-            {
-                dropdown.value = 0;
-            }
+            dropdown.RefreshShownValue();
         }
 
-        public void OnValueChaged(int value)
+        private bool FillAvailableResolutions()
         {
-            Screen.SetResolution(resolutions[value].width, resolutions[value].height, true);
+            resolutions = Screen.resolutions;
+            if (resolutions.Length == 0)
+            {
+                // Not supported by platform
+                transform.parent.gameObject.SetActive(false);
+                return false;
+            }
+            resolutions = resolutions.Distinct().ToArray();
+            return true;
         }
     }
 }

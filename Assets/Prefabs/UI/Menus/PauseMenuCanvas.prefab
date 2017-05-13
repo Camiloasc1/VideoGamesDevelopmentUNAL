@@ -487,7 +487,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224253007573370140}
-  - component: {fileID: 222277925601696990}
   - component: {fileID: 114780635121575666}
   - component: {fileID: 114962163809321660}
   m_Layer: 5
@@ -2426,12 +2425,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1824137169300590}
---- !u!222 &222277925601696990
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1602535485709392}
 --- !u!222 &222303002271965288
 CanvasRenderer:
   m_ObjectHideFlags: 1

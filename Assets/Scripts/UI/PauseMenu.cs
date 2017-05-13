@@ -17,14 +17,20 @@ namespace UI
 
         private void OnEnable()
         {
-            cameraBlur.enabled = true;
+            if (cameraBlur)
+            {
+                cameraBlur.enabled = true;
+            }
             Time.timeScale = 0f;
             SetViewMain();
         }
 
         private void OnDisable()
         {
-            cameraBlur.enabled = false;
+            if (cameraBlur)
+            {
+                cameraBlur.enabled = false;
+            }
             Time.timeScale = 1f;
         }
 

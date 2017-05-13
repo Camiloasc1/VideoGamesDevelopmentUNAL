@@ -22,6 +22,7 @@ namespace Game
                 return gameController;
             }
         }
+
         public static GameMode GameMode
         {
             get
@@ -32,6 +33,19 @@ namespace Game
                     throw new ArgumentNullException("gameMode", "gameMode not found in GameController");
                 }
                 return gameMode;
+            }
+        }
+
+        public static Prefs Prefs
+        {
+            get
+            {
+                var prefs = Instance.GetComponentInChildren<Prefs>();
+                if (!prefs)
+                {
+                    throw new ArgumentNullException("prefs", "prefs not found in GameController");
+                }
+                return prefs;
             }
         }
     }

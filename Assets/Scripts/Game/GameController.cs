@@ -40,7 +40,7 @@ namespace Game
         {
             get
             {
-                var prefs = Instance.GetComponentInChildren<Prefs>();
+                var prefs = Instance.GetComponent<Prefs>();
                 if (!prefs)
                 {
                     throw new ArgumentNullException("prefs", "prefs not found in GameController");

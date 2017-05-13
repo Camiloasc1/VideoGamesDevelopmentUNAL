@@ -32,7 +32,7 @@ namespace Game
                 if (TimeLeft <= 0)
                 {
                     TimeLeft = 0;
-                    GameController.GameMode.Defeat();
+                    GameController.GameMode.GameOver();
                 }
             }
         }

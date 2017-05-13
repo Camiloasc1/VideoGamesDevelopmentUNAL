@@ -5,7 +5,7 @@ namespace UI
 {
     public class PauseGame : MonoBehaviour
     {
-        public GameObject pauseMenuCanvas;
+        public PauseMenu pauseMenu;
 
         private void Update()
         {
@@ -17,7 +17,7 @@ namespace UI
 
         public void TogglePause()
         {
-            pauseMenuCanvas.SetActive(!pauseMenuCanvas.activeSelf);
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
         }
     }
 }

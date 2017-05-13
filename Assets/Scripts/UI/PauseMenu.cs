@@ -1,37 +1,54 @@
 ﻿using System;
 using UnityEngine;
-using UnityStandardAssets.ImageEffects;
+using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
         public Transform pausePanel;
+        public Selectable pauseFocus;
         public Transform settingsPanel;
-        private BlurOptimized cameraBlur;
+        public Selectable settingsFocus;
 
-        private void Awake()
+        public Views CurrentView
         {
-            cameraBlur = Camera.main.GetComponent<BlurOptimized>();
+            get
+            {
+                if (pausePanel.gameObject.activeSelf)
+                {
+                    return Views.Main;
+                }
+                if (settingsPanel.gameObject.activeSelf)
+                {
+                    return Views.Settings;
+                }
+                return Views.Main;
+            }
         }
 
         private void OnEnable()
         {
-            if (cameraBlur)
-            {
-                cameraBlur.enabled = true;
-            }
-            Time.timeScale = 0f;
             SetViewMain();
         }
 
-        private void OnDisable()
+        private void Update()
         {
-            if (cameraBlur)
+            if (CrossPlatformInputManager.GetButtonDown("Cancel"))
             {
-                cameraBlur.enabled = false;
+                switch (CurrentView)
+                {
+                    case Views.Main:
+                        gameObject.SetActive(false);
+                        break;
+                    case Views.Settings:
+                        SetViewMain();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
-            Time.timeScale = 1f;
         }
 
         public void SetViewMain()
@@ -51,10 +68,12 @@ namespace UI
                 case Views.Main:
                     pausePanel.gameObject.SetActive(true);
                     settingsPanel.gameObject.SetActive(false);
+                    pauseFocus.Select();
                     break;
                 case Views.Settings:
                     pausePanel.gameObject.SetActive(false);
                     settingsPanel.gameObject.SetActive(true);
+                    settingsFocus.Select();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("view", view, null);

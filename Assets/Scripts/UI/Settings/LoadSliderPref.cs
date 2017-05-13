@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Settings
@@ -9,6 +10,21 @@ namespace UI.Settings
         public string pref;
 
         private void Start()
+        {
+            ReloadValue();
+        }
+
+        private void OnEnable()
+        {
+            GameController.Prefs.OnSettingsChanged += ReloadValue;
+        }
+
+        private void OnDisable()
+        {
+            GameController.Prefs.OnSettingsChanged -= ReloadValue;
+        }
+
+        private void ReloadValue()
         {
             if (pref.Length == 0)
             {

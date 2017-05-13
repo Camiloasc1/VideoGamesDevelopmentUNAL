@@ -3,14 +3,18 @@
 namespace Game
 {
 	public class GameMode : MonoBehaviour {
+
+		public Transform victoryCanvas;
+		public Transform gameOverCanvas;
+
 		public void Victory()
 		{
-			print("Victory!");
+			victoryCanvas.gameObject.SetActive(true);
 		}
 
-		public void Defeat()
+		public void GameOver()
 		{
-			print("Defeat!");
+			gameOverCanvas.gameObject.SetActive(true);
 		}
 	}
 }

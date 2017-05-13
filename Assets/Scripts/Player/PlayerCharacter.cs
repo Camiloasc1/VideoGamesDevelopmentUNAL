@@ -41,7 +41,7 @@ namespace Player
 
         private void Die()
         {
-            GameController.GameMode.Defeat();
+            GameController.GameMode.GameOver();
         }
     }
 }

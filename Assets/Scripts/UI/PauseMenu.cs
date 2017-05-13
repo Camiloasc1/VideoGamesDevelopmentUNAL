@@ -12,19 +12,19 @@ namespace UI
         public Transform settingsPanel;
         public Selectable settingsFocus;
 
-        public Views CurrentView
+        public PauseViews CurrentView
         {
             get
             {
                 if (pausePanel.gameObject.activeSelf)
                 {
-                    return Views.Main;
+                    return PauseViews.Main;
                 }
                 if (settingsPanel.gameObject.activeSelf)
                 {
-                    return Views.Settings;
+                    return PauseViews.Settings;
                 }
-                return Views.Main;
+                return PauseViews.Main;
             }
         }
 
@@ -39,10 +39,10 @@ namespace UI
             {
                 switch (CurrentView)
                 {
-                    case Views.Main:
+                    case PauseViews.Main:
                         gameObject.SetActive(false);
                         break;
-                    case Views.Settings:
+                    case PauseViews.Settings:
                         SetViewMain();
                         break;
                     default:
@@ -53,24 +53,24 @@ namespace UI
 
         public void SetViewMain()
         {
-            SetView(Views.Main);
+            SetView(PauseViews.Main);
         }
 
         public void SetViewOptions()
         {
-            SetView(Views.Settings);
+            SetView(PauseViews.Settings);
         }
 
-        private void SetView(Views view)
+        private void SetView(PauseViews view)
         {
             switch (view)
             {
-                case Views.Main:
+                case PauseViews.Main:
                     pausePanel.gameObject.SetActive(true);
                     settingsPanel.gameObject.SetActive(false);
                     pauseFocus.Select();
                     break;
-                case Views.Settings:
+                case PauseViews.Settings:
                     pausePanel.gameObject.SetActive(false);
                     settingsPanel.gameObject.SetActive(true);
                     settingsFocus.Select();
@@ -81,7 +81,7 @@ namespace UI
         }
     }
 
-    public enum Views
+    public enum PauseViews
     {
         Main,
         Settings

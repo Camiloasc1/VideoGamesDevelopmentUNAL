@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-namespace UI
+namespace UI.Menus
 {
     public class MainMenu : MonoBehaviour
     {

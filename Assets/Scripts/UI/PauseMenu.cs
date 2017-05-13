@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
-using UnityStandardAssets.ImageEffects;
 
 namespace UI
 {
@@ -12,7 +11,6 @@ namespace UI
         public Selectable pauseFocus;
         public Transform settingsPanel;
         public Selectable settingsFocus;
-        private BlurOptimized cameraBlur;
 
         public Views CurrentView
         {
@@ -30,28 +28,9 @@ namespace UI
             }
         }
 
-        private void Awake()
-        {
-            cameraBlur = Camera.main.GetComponent<BlurOptimized>();
-        }
-
         private void OnEnable()
         {
-            if (cameraBlur)
-            {
-                cameraBlur.enabled = true;
-            }
-            Time.timeScale = 0f;
             SetViewMain();
-        }
-
-        private void OnDisable()
-        {
-            if (cameraBlur)
-            {
-                cameraBlur.enabled = false;
-            }
-            Time.timeScale = 1f;
         }
 
         private void Update()

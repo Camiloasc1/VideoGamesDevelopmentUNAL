@@ -78,11 +78,10 @@ namespace Enemies
         public bool TryShoot(Vector3 target)
         {
             var toTarget = target - transform.position;
-            transform.rotation = Quaternion.LookRotation(toTarget);
-            var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
+            transform.localEulerAngles = new Vector3(Quaternion.LookRotation(toTarget).eulerAngles.x, 0, 0);
 
             // Is far enough
-            if (toTargetMagnitude > ViewDistance)
+            if (toTarget.magnitude > ViewDistance)
             {
                 return false;
             }
@@ -127,7 +126,6 @@ namespace Enemies
 
             clipAmmo--;
             gunFlare.Emit(1);
-            lantern.color = dangerColor;
             StartCoroutine(CanShootDelay());
         }
 
@@ -137,7 +135,6 @@ namespace Enemies
             if (clipAmmo == 0)
             {
                 clipAmmo = ammoPerClip;
-                lantern.color = warningColor;
                 yield return new WaitForSeconds(reloadTime);
             }
             else
@@ -146,5 +143,30 @@ namespace Enemies
             }
             canShoot = true;
         }
+
+        public void SetLanternState(LanternStates state)
+        {
+            switch (state)
+            {
+                case LanternStates.Normal:
+                    lantern.color = normalColor;
+                    break;
+                case LanternStates.Warning:
+                    lantern.color = warningColor;
+                    break;
+                case LanternStates.Danger:
+                    lantern.color = dangerColor;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("state", state, null);
+            }
+        }
+    }
+
+    public enum LanternStates
+    {
+        Normal,
+        Warning,
+        Danger
     }
 }

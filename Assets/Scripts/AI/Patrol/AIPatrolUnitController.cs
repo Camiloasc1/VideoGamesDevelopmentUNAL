@@ -202,6 +202,7 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     navAgent.speed = patrolSpeed;
                     characterControl.target = patrolTarget;
+                    weapon.SetLanternState(LanternStates.Normal);
                     break;
                 case AIPatrolUnitStates.Chasing:
                     navAgent.speed = chaseSpeed;
@@ -209,6 +210,7 @@ namespace AI.Patrol
                     characterControl.target = chaseTarget;
                     characterControl.useRelativePosition = false;
                     characterControl.useRelativeRotation = false;
+                    weapon.SetLanternState(LanternStates.Danger);
                     break;
                 case AIPatrolUnitStates.Lost:
                     wanderOrigin = characterControl.target.position;
@@ -265,7 +267,7 @@ namespace AI.Patrol
                     characterControl.useRelativeRotation = true;
                     characterControl.MoveToTarget();
                     weapon.transform.localRotation = Quaternion.identity;
-                    weapon.GetComponent<Light>().color = weapon.normalColor;
+                    weapon.SetLanternState(LanternStates.Warning);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

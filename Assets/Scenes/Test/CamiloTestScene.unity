@@ -402,11 +402,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.110415146
       objectReference: {fileID: 0}
-    - target: {fileID: 114678514205159794, guid: dd566f92a61f4bd45b1b783699c59ec3,
-        type: 2}
-      propertyPath: maxHealth
-      value: 500
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd566f92a61f4bd45b1b783699c59ec3, type: 2}
   m_IsPrefabParent: 0
@@ -1402,6 +1397,10 @@ Prefab:
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 1091945919}
+    - target: {fileID: 1740896624317736, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76ab72691f508cb4ab87be68942090f3, type: 2}
   m_IsPrefabParent: 0
@@ -1483,6 +1482,10 @@ Prefab:
     - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
       propertyPath: m_Name
       value: TestAIPatrolSlave (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439625065299216, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b7c61ad7ede3d34d83858b657f95fae, type: 2}

@@ -1725,7 +1725,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057520819248582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.33, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4502119903300804}
@@ -2527,6 +2527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a33eeb5ac8bc554cbd91af578df41e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouchEyes: {x: 0, y: 0.6, z: 0}
+  standEyes: {x: 0, y: 1.25, z: 0}
 --- !u!114 &114678514205159794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2538,7 +2540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7f2aee2e963ff478c16bdbc1f30f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 20
 --- !u!114 &114794904687704416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2550,8 +2552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35891aca1b2a6fb438051694e81b86ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crouchEyes: {x: 0, y: 0.7, z: 0}
-  standEyes: {x: 0, y: 1.33, z: 0}
+  bIsHiding: 0
 --- !u!114 &114827823766666842
 MonoBehaviour:
   m_ObjectHideFlags: 1

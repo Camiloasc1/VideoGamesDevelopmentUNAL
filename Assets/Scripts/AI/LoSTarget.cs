@@ -18,7 +18,7 @@ namespace AI
         {
             if (playerController)
             {
-                transform.position = playerController.bIsHiding ? crouchEyes : standEyes;
+                transform.localPosition = playerController.bIsHiding ? crouchEyes : standEyes;
             }
         }
     }

@@ -25,6 +25,11 @@ namespace Player
             get { return Health / maxHealth; }
         }
 
+        public bool IsAlive
+        {
+            get { return Health > 0f; }
+        }
+
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
@@ -33,6 +38,14 @@ namespace Player
         private void Start()
         {
             Health = maxHealth;
+        }
+
+        private void Update()
+        {
+            if (HealthPercent <= 0.5f && IsAlive && !audioSource.isPlaying)
+            {
+                PlaySound(playerSounds.lowHealth);
+            }
         }
 
         private void PlaySound(AudioClip clip)

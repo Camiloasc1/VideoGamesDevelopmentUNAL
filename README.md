@@ -3,8 +3,11 @@ Project for Video Games Developement at UNAL
 
 Team Members:
 
-* Osmond Pomare
-* Nicolas Larrañaga
-* Camilo Sanchez
+* Camilo Sanchez (Programmer)
+* Osmond Pomare (Level designer)
+* Nicolas Larrañaga (Level designer)
+
+Former Team Members:
+
 * Daniel Navas (Almost doesn't work)
 * Alejandro Serrano (Useless deserter)

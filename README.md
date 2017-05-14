@@ -1,10 +1,13 @@
-# VideoGamesDevelopementUNAL Grupo 6
-Repo for Video Games Developement at UNAL
+# VideoGamesDevelopementUNAL
+Project for Video Games Developement at UNAL
 
 Team Members:
 
-* Osmond Pomare
-* Alejandro Serrano
-* Nicolas Larrañaga
-* Camilo Sanchez
-* Daniel Navas
+* Camilo Sanchez (Programmer)
+* Osmond Pomare (Level designer)
+* Nicolas Larrañaga (Level designer)
+
+Former Team Members:
+
+* Daniel Navas (Almost doesn't work)
+* Alejandro Serrano (Useless deserter)

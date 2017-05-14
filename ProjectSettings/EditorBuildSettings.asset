@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9fab0f5fc1887da4890c04bfe7eaade9
+  - enabled: 1
+    path: Assets/Scenes/Test/CamiloTestScene.unity
+    guid: be2e3ed90a1802645b116d3afb0480fb

@@ -145,8 +145,10 @@ namespace AI.CheckPoint
             {
                 case AIPatrolUnitStates.Patrol:
                     patrolTarget *= Quaternion.Euler(0f, stepRotation, 0f);
+                    weapon.SetLanternState(LanternStates.Normal);
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    weapon.SetLanternState(LanternStates.Danger);
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;
@@ -166,7 +168,9 @@ namespace AI.CheckPoint
                     transform.rotation = deltaRotation;
                     break;
                 case AIPatrolUnitStates.Chasing:
-                    var targetRotation = Quaternion.LookRotation(chaseTarget.position - transform.position);
+                    var toTarget = chaseTarget.position - transform.position;
+                    toTarget.y = 0;
+                    var targetRotation = Quaternion.LookRotation(toTarget);
                     deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
                         chaseAngularSpeed * Time.deltaTime);
                     transform.rotation = deltaRotation;
@@ -186,6 +190,8 @@ namespace AI.CheckPoint
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    weapon.transform.localRotation = Quaternion.identity;
+                    weapon.SetLanternState(LanternStates.Normal);
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;

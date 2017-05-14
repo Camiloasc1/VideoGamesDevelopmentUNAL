@@ -10,8 +10,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: VGD-UNAL
+  companyName: UNAL
+  productName: Victims
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -596,7 +596,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
   cloudProjectId: 482f14a2-9432-48bf-b009-1b3dd87b86f1
-  projectName: VGD-UNAL
+  projectName: Victims
   organizationId: vgd-unal
   cloudEnabled: 0
   enableNewInputSystem: 0

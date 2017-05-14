@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    [RequireComponent(typeof(Light))]
     [RequireComponent(typeof(ParticleSystem))]
     public class Weapon : MonoBehaviour
     {
@@ -15,8 +16,12 @@ namespace Enemies
         [Tooltip("The reload time")] public float reloadTime = 2.5f;
         [Tooltip("The ammount of ammo per clip")] public int ammoPerClip = 10;
         [Header("Status")] [Tooltip("The weapon shooting")] public bool isShooting;
+        public Color normalColor;
+        public Color warningColor;
+        public Color dangerColor;
 
         private ParticleSystem gunFlare;
+        private Light lantern;
 
         private int clipAmmo;
         private bool canShoot;
@@ -29,6 +34,7 @@ namespace Enemies
         private void Awake()
         {
             gunFlare = GetComponent<ParticleSystem>();
+            lantern = GetComponent<Light>();
 
             if (!projectileTemplate)
             {
@@ -72,11 +78,10 @@ namespace Enemies
         public bool TryShoot(Vector3 target)
         {
             var toTarget = target - transform.position;
-            toTarget.y = 0;
-            var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
+            transform.localEulerAngles = new Vector3(Quaternion.LookRotation(toTarget).eulerAngles.x, 0, 0);
 
             // Is far enough
-            if (toTargetMagnitude > ViewDistance)
+            if (toTarget.magnitude > ViewDistance)
             {
                 return false;
             }
@@ -138,5 +143,30 @@ namespace Enemies
             }
             canShoot = true;
         }
+
+        public void SetLanternState(LanternStates state)
+        {
+            switch (state)
+            {
+                case LanternStates.Normal:
+                    lantern.color = normalColor;
+                    break;
+                case LanternStates.Warning:
+                    lantern.color = warningColor;
+                    break;
+                case LanternStates.Danger:
+                    lantern.color = dangerColor;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("state", state, null);
+            }
+        }
+    }
+
+    public enum LanternStates
+    {
+        Normal,
+        Warning,
+        Danger
     }
 }

@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    [RequireComponent(typeof(Light))]
     [RequireComponent(typeof(ParticleSystem))]
     public class Weapon : MonoBehaviour
     {
@@ -15,8 +16,12 @@ namespace Enemies
         [Tooltip("The reload time")] public float reloadTime = 2.5f;
         [Tooltip("The ammount of ammo per clip")] public int ammoPerClip = 10;
         [Header("Status")] [Tooltip("The weapon shooting")] public bool isShooting;
+        public Color normalColor;
+        public Color warningColor;
+        public Color dangerColor;
 
         private ParticleSystem gunFlare;
+        private Light lantern;
 
         private int clipAmmo;
         private bool canShoot;
@@ -29,6 +34,7 @@ namespace Enemies
         private void Awake()
         {
             gunFlare = GetComponent<ParticleSystem>();
+            lantern = GetComponent<Light>();
 
             if (!projectileTemplate)
             {
@@ -72,7 +78,7 @@ namespace Enemies
         public bool TryShoot(Vector3 target)
         {
             var toTarget = target - transform.position;
-            toTarget.y = 0;
+            transform.rotation = Quaternion.LookRotation(toTarget);
             var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
 
             // Is far enough
@@ -121,6 +127,7 @@ namespace Enemies
 
             clipAmmo--;
             gunFlare.Emit(1);
+            lantern.color = dangerColor;
             StartCoroutine(CanShootDelay());
         }
 
@@ -130,6 +137,7 @@ namespace Enemies
             if (clipAmmo == 0)
             {
                 clipAmmo = ammoPerClip;
+                lantern.color = warningColor;
                 yield return new WaitForSeconds(reloadTime);
             }
             else

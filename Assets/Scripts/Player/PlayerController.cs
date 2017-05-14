@@ -9,14 +9,12 @@ namespace Player
     [RequireComponent(typeof (PlayerCharacter))]
     public class PlayerController : MonoBehaviour
     {
-        public Vector3 crouchEyes = new Vector3(0, 0.7f, 0);
-        public Vector3 standEyes = new Vector3(0, 1.33f, 0);
+        [HideInInspector] public bool bIsHiding;
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        private bool bIsHiding;
 
 
         private void Start()
@@ -45,16 +43,7 @@ namespace Player
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
-            if (CrossPlatformInputManager.GetButtonDown("Fire1"))
-            {
-                bIsHiding = true;
-                GetComponentInChildren<LoSTarget>().transform.position = crouchEyes;
-            }
-            else if (CrossPlatformInputManager.GetButtonUp("Fire1"))
-            {
-                bIsHiding = false;
-                GetComponentInChildren<LoSTarget>().transform.position = standEyes;
-            }
+            bIsHiding = CrossPlatformInputManager.GetButton("Fire1");
         }
 
 

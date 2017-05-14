@@ -240,7 +240,7 @@ namespace AI.Patrol
                             navAgent.angularSpeed * Time.deltaTime);
                         transform.rotation = deltaRotation;
                     }
-                    weapon.TryShoot(chaseTarget.GetComponent<Collider>().bounds.center);
+                    weapon.TryShoot(chaseTarget.position);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

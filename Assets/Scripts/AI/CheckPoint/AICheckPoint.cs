@@ -170,7 +170,7 @@ namespace AI.CheckPoint
                     deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
                         chaseAngularSpeed * Time.deltaTime);
                     transform.rotation = deltaRotation;
-                    weapon.TryShoot(chaseTarget.GetComponent<Collider>().bounds.center);
+                    weapon.TryShoot(chaseTarget.position);
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;

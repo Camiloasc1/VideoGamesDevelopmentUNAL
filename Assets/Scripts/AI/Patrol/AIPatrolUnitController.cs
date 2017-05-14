@@ -237,7 +237,9 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Chasing:
                     if (navAgent.velocity.magnitude < 0.1f)
                     {
-                        var targetRotation = Quaternion.LookRotation(chaseTarget.position - transform.position);
+                        var toTarget = chaseTarget.position - transform.position;
+                        toTarget.y = 0;
+                        var targetRotation = Quaternion.LookRotation(toTarget);
                         var deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
                             navAgent.angularSpeed * Time.deltaTime);
                         transform.rotation = deltaRotation;

@@ -238,7 +238,7 @@ namespace AI.Patrol
                             navAgent.angularSpeed * Time.deltaTime);
                         transform.rotation = deltaRotation;
                     }
-                    weapon.TryShoot(chaseTarget.position);
+                    weapon.TryShoot(chaseTarget.GetComponent<Collider>().bounds.center);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;
@@ -262,6 +262,8 @@ namespace AI.Patrol
                     characterControl.useRelativePosition = true;
                     characterControl.useRelativeRotation = true;
                     characterControl.MoveToTarget();
+                    weapon.transform.localRotation = Quaternion.identity;
+                    weapon.GetComponent<Light>().color = weapon.normalColor;
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

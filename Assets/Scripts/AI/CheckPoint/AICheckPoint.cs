@@ -170,7 +170,7 @@ namespace AI.CheckPoint
                     deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
                         chaseAngularSpeed * Time.deltaTime);
                     transform.rotation = deltaRotation;
-                    weapon.TryShoot(chaseTarget.position);
+                    weapon.TryShoot(chaseTarget.GetComponent<Collider>().bounds.center);
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;
@@ -186,6 +186,8 @@ namespace AI.CheckPoint
                 case AIPatrolUnitStates.Patrol:
                     break;
                 case AIPatrolUnitStates.Chasing:
+                    weapon.transform.localRotation = Quaternion.identity;
+                    weapon.GetComponent<Light>().color = weapon.normalColor;
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;

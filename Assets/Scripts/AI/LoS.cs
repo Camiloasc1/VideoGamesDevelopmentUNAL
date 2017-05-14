@@ -136,9 +136,8 @@ namespace AI
         private bool RaycastToTarget(Vector3 toTarget, Transform target)
         {
             RaycastHit hitInfo;
-//            var bounds = target.GetComponent<Collider>().bounds;
-//            if (Physics.Raycast(transform.position + eyesOffset, bounds.center - (transform.position + eyesOffset),
-//                out hitInfo, toTarget.magnitude))
+            var bounds = target.GetComponent<Collider>().bounds;
+            toTarget = bounds.center - (transform.position + eyesOffset);
             if (Physics.Raycast(transform.position + eyesOffset, toTarget, out hitInfo, toTarget.magnitude))
             {
                 return hitInfo.transform == target;

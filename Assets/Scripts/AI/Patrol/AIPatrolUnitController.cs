@@ -31,12 +31,13 @@ namespace AI.Patrol
         /// <summary>
         /// True when has a valid target
         /// </summary>
-        public bool hasChaseTarget
+        public bool HasChaseTarget
         {
             get
             {
                 if (patrolGroup)
                 {
+                    chaseTarget = patrolGroup.target;
                     return chaseTarget && patrolGroup.onView > 0;
                 }
                 return chaseTarget;
@@ -86,6 +87,7 @@ namespace AI.Patrol
         private void OnLoSEnter(Transform target)
         {
             patrolGroup.onView++;
+            patrolGroup.target = target;
             chaseTarget = target;
         }
 
@@ -124,21 +126,21 @@ namespace AI.Patrol
             switch (state)
             {
                 case AIPatrolUnitStates.Patrol:
-                    if (hasChaseTarget)
+                    if (HasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
                     }
                     break;
                 case AIPatrolUnitStates.Chasing:
-                    if (!hasChaseTarget)
+                    if (!HasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Lost;
                         return true;
                     }
                     break;
                 case AIPatrolUnitStates.Lost:
-                    if (hasChaseTarget)
+                    if (HasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
@@ -154,7 +156,7 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Wandering:
-                    if (hasChaseTarget)
+                    if (HasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
@@ -167,7 +169,7 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Waiting:
-                    if (hasChaseTarget)
+                    if (HasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using AI;
+using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -8,6 +9,8 @@ namespace Player
     [RequireComponent(typeof (PlayerCharacter))]
     public class PlayerController : MonoBehaviour
     {
+        public Vector3 crouchEyes = new Vector3(0, 0.7f, 0);
+        public Vector3 standEyes = new Vector3(0, 1.33f, 0);
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
@@ -41,7 +44,17 @@ namespace Player
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
-            bIsHiding = CrossPlatformInputManager.GetButton("Fire1");
+
+            if (CrossPlatformInputManager.GetButtonDown("Fire1"))
+            {
+                bIsHiding = true;
+                GetComponentInChildren<LoSTarget>().transform.position = crouchEyes;
+            }
+            else if (CrossPlatformInputManager.GetButtonUp("Fire1"))
+            {
+                bIsHiding = false;
+                GetComponentInChildren<LoSTarget>().transform.position = standEyes;
+            }
         }
 
 

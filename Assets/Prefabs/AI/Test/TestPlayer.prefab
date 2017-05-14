@@ -2550,6 +2550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35891aca1b2a6fb438051694e81b86ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouchEyes: {x: 0, y: 0.7, z: 0}
+  standEyes: {x: 0, y: 1.33, z: 0}
 --- !u!114 &114827823766666842
 MonoBehaviour:
   m_ObjectHideFlags: 1

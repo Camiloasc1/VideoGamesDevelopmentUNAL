@@ -42,7 +42,6 @@ namespace Player
 
         private void Update()
         {
-            // This is not taking care of possible health recover
             if (HealthPercent <= 0.5f)
             {
                 if (IsAlive)
@@ -53,10 +52,14 @@ namespace Player
                         PlaySound(1, playerSounds.lowHealth);
                     }
                 }
-                else
+                else if (audioSources[1].isPlaying)
                 {
                     audioSources[1].Stop();
                 }
+            }
+            else if (audioSources[1].isPlaying)
+            {
+                audioSources[1].Stop();
             }
         }
 
@@ -86,7 +89,10 @@ namespace Player
             if (Health > 0f)
             {
                 Health -= damage;
-                PlaySound(0, playerSounds.damage);
+                if (!audioSources[0].isPlaying)
+                {
+                    PlaySound(0, playerSounds.damage);
+                }
                 OnPlayerRecieveDamage(damage);
                 if (Health <= 0f)
                 {

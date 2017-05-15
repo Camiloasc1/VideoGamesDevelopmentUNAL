@@ -7,6 +7,7 @@ namespace Enemies
 {
     [RequireComponent(typeof(Light))]
     [RequireComponent(typeof(ParticleSystem))]
+    [RequireComponent(typeof(AudioSource))]
     public class Weapon : MonoBehaviour
     {
         [Tooltip("The projectile prefab")] public Projectile projectileTemplate;
@@ -15,6 +16,8 @@ namespace Enemies
         [Tooltip("The delay between shoots")] public float fireRate = 0.25f;
         [Tooltip("The reload time")] public float reloadTime = 2.5f;
         [Tooltip("The ammount of ammo per clip")] public int ammoPerClip = 10;
+        [Tooltip("Fire sound")] public AudioClip fireSound;
+        [Tooltip("Reload sound")] public AudioClip reloadSound;
         [Header("Status")] [Tooltip("The weapon shooting")] public bool isShooting;
         public Color normalColor;
         public Color warningColor;
@@ -22,6 +25,7 @@ namespace Enemies
 
         private ParticleSystem gunFlare;
         private Light lantern;
+        private AudioSource audioSource;
 
         private int clipAmmo;
         private bool canShoot;
@@ -35,6 +39,7 @@ namespace Enemies
         {
             gunFlare = GetComponent<ParticleSystem>();
             lantern = GetComponent<Light>();
+            audioSource = GetComponent<AudioSource>();
 
             if (!projectileTemplate)
             {
@@ -126,6 +131,7 @@ namespace Enemies
 
             clipAmmo--;
             gunFlare.Emit(1);
+            PlaySound(fireSound);
             StartCoroutine(CanShootDelay());
         }
 
@@ -135,6 +141,10 @@ namespace Enemies
             if (clipAmmo == 0)
             {
                 clipAmmo = ammoPerClip;
+                if (!audioSource.isPlaying)
+                {
+                    PlaySound(reloadSound);
+                }
                 yield return new WaitForSeconds(reloadTime);
             }
             else
@@ -160,6 +170,17 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException("state", state, null);
             }
+        }
+
+        private void PlaySound(AudioClip clip)
+        {
+            if (!clip)
+            {
+                return;
+            }
+
+            audioSource.clip = clip;
+            audioSource.Play();
         }
     }
 

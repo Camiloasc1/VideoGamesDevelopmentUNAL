@@ -110,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4479650896035878}
   - component: {fileID: 114079220712927870}
+  - component: {fileID: 81343031166822606}
   m_Layer: 0
   m_Name: LoSTarget
   m_TagString: Untagged
@@ -2501,6 +2502,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!81 &81343031166822606
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1057520819248582}
+  m_Enabled: 1
 --- !u!82 &82060007563702848
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2512,8 +2520,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243925371350934652, guid: c984b30feda124d47afb93575bef61f9,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2593,8 +2601,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243925371350934652, guid: c984b30feda124d47afb93575bef61f9,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2650,7 +2658,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

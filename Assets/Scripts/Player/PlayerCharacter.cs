@@ -9,7 +9,7 @@ namespace Player
         [Tooltip("The player's max health")] public float maxHealth = 5f;
         public PlayerSounds playerSounds;
 
-        private AudioSource audioSource;
+        private AudioSource[] audioSources;
 
         public delegate void OnPlayerRecieveDamage_(float damage);
 
@@ -32,7 +32,7 @@ namespace Player
 
         private void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
+            audioSources = GetComponents<AudioSource>();
         }
 
         private void Start()
@@ -42,31 +42,43 @@ namespace Player
 
         private void Update()
         {
-            if (HealthPercent <= 0.5f && IsAlive && !audioSource.isPlaying)
+            // This is not taking care of possible health recover
+            if (HealthPercent <= 0.5f)
             {
-                PlaySound(playerSounds.lowHealth);
+                if (IsAlive)
+                {
+                    if (!audioSources[1].isPlaying)
+                    {
+                        audioSources[1].loop = true;
+                        PlaySound(1, playerSounds.lowHealth);
+                    }
+                }
+                else
+                {
+                    audioSources[1].Stop();
+                }
             }
         }
 
-        private void PlaySound(AudioClip clip)
+        private void PlaySound(int index, AudioClip clip)
         {
             if (!clip)
             {
                 return;
             }
 
-            audioSource.clip = clip;
-            audioSource.Play();
+            audioSources[index].clip = clip;
+            audioSources[index].Play();
         }
 
-        private void PlaySound(AudioClip[] clips)
+        private void PlaySound(int index, AudioClip[] clips)
         {
             if (clips.Length == 0)
             {
                 return;
             }
 
-            PlaySound(clips[Random.Range(0, clips.Length)]);
+            PlaySound(index, clips[Random.Range(0, clips.Length)]);
         }
 
         public void Damage(float damage)
@@ -74,12 +86,12 @@ namespace Player
             if (Health > 0f)
             {
                 Health -= damage;
-                PlaySound(playerSounds.damage);
+                PlaySound(0, playerSounds.damage);
                 OnPlayerRecieveDamage(damage);
                 if (Health <= 0f)
                 {
                     Die();
-                    PlaySound(playerSounds.death);
+                    PlaySound(0, playerSounds.death);
                     OnPlayerDeath();
                 }
             }

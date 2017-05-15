@@ -2541,11 +2541,12 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137216694586808}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243925371350934652, guid: c984b30feda124d47afb93575bef61f9,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: acc5a3cbf9b7346a8ab39f638c4a60cc, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2578,13 +2579,13 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2602,7 +2603,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2741,6 +2742,8 @@ MonoBehaviour:
   fireRate: 0.25
   reloadTime: 2.5
   ammoPerClip: 10
+  fireSound: {fileID: 8300000, guid: 4e6bfb743ee24ae46a7bd7edc4c557d5, type: 3}
+  reloadSound: {fileID: 8300000, guid: 8566a22ea82a45a4b9b066a34ff4535d, type: 3}
   isShooting: 0
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   warningColor: {r: 1, g: 1, b: 0, a: 0}
@@ -3038,7 +3041,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1924016257
+  randomSeed: 1701428528
   InitialModule:
     serializedVersion: 3
     enabled: 1

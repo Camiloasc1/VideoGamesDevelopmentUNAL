@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using Game;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UI.Menus
 {
     public class ContinueGame : MonoBehaviour
     {
+        public SceneLoader sceneLoader;
+
         public void Continue()
         {
             int savedLevel;
@@ -13,14 +16,14 @@ namespace UI.Menus
                 savedLevel = PlayerPrefs.GetInt("SavedLevel");
                 if (savedLevel == 0)
                 {
-                    savedLevel = 1;
+                    savedLevel = 2;
                 }
             }
             else
             {
-                savedLevel = 1;
+                savedLevel = 2;
             }
-            SceneManager.LoadScene(savedLevel);
+            sceneLoader.LoadScene(savedLevel);
         }
     }
 }

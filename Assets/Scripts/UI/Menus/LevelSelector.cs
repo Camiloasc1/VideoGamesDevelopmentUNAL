@@ -1,4 +1,5 @@
 ﻿using System;
+using Game;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ namespace UI.Menus
 {
     public class LevelSelector : MonoBehaviour
     {
+        public SceneLoader sceneLoader;
         public GameObject template;
         public LoadableLevel[] levels;
 
@@ -30,7 +32,7 @@ namespace UI.Menus
 
         public void OnLevelButtonClick(int scene)
         {
-            SceneManager.LoadScene(scene);
+            sceneLoader.LoadScene(scene);
         }
     }
 

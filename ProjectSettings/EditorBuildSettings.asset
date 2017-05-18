@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 9fab0f5fc1887da4890c04bfe7eaade9
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 67ad10df738995a4e97fed2f4ecc2aaa
+  - enabled: 1
     path: Assets/Scenes/Test/CamiloTestScene.unity
     guid: be2e3ed90a1802645b116d3afb0480fb

@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 222639391946752566}
   - component: {fileID: 114525754904512330}
   - component: {fileID: 114425287923077656}
+  - component: {fileID: 114643678555487144}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -635,7 +636,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114525754904512330}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114643678555487144}
+        m_MethodName: Continue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114432089118988690
@@ -783,6 +795,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114643678555487144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406570278943716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5439e5ae4d90c21449b301e430380811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
 --- !u!114 &114717014518293442
 MonoBehaviour:
   m_ObjectHideFlags: 1

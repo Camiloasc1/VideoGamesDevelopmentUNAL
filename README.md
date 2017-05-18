@@ -3,11 +3,14 @@ Project for Video Games Developement at UNAL
 
 Team Members:
 
-* Camilo Sanchez (Programmer)
+* Camilo Sanchez (UI Programmer, AI Programmer, Gameplay Programmer)
+* Nicolas Larrañaga (Game Designer, Script Writer, Art Director, Level designer)
 * Osmond Pomare (Level designer)
-* Nicolas Larrañaga (Level designer)
+
+Team Semi-Members:
+
+* Daniel Navas (Works after being threatened)
 
 Former Team Members:
 
-* Daniel Navas (Almost doesn't work)
 * Alejandro Serrano (Useless deserter)

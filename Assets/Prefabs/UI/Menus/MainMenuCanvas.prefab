@@ -777,7 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224580525457543544}
   - component: {fileID: 114207976940032262}
-  - component: {fileID: 114587363382072082}
+  - component: {fileID: 114201066850095630}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -994,6 +994,7 @@ GameObject:
   - component: {fileID: 223314834802740778}
   - component: {fileID: 114995945517389572}
   - component: {fileID: 114689672656328056}
+  - component: {fileID: 82167539232255000}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -1051,6 +1052,87 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &82167539232255000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885874902228388}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243827697998204930, guid: c984b30feda124d47afb93575bef61f9,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 3757e99bb2e73a440b1afd288665b460, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114031617780997348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1306,6 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5439e5ae4d90c21449b301e430380811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
 --- !u!114 &114143328009588894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1524,6 +1607,17 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: credits
+--- !u!114 &114201066850095630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598022698256248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf33354db559464ab8a58bf510fe25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114207976940032262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1855,9 +1949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f8d750a79448a4482c1862bb095a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
   template: {fileID: 1306970594877544}
   levels:
-  - scene: 1
+  - scene: 2
     name: Test
     sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &114362355310392032
@@ -1964,7 +2059,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2382,17 +2477,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114587363382072082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598022698256248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf33354db559464ab8a58bf510fe25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114589094164906404
 MonoBehaviour:
   m_ObjectHideFlags: 1

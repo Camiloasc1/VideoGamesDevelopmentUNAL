@@ -777,7 +777,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224580525457543544}
   - component: {fileID: 114207976940032262}
-  - component: {fileID: 114587363382072082}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1388,6 +1387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5439e5ae4d90c21449b301e430380811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 0}
 --- !u!114 &114143328009588894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1940,7 +1940,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 0}
   template: {fileID: 1306970594877544}
   levels:
-  - scene: 1
+  - scene: 2
     name: Test
     sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &114362355310392032
@@ -2047,7 +2047,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2465,17 +2465,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114587363382072082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598022698256248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf33354db559464ab8a58bf510fe25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114589094164906404
 MonoBehaviour:
   m_ObjectHideFlags: 1

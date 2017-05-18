@@ -179,9 +179,6 @@ MonoBehaviour:
   reloadTime: 2.5
   ammoPerClip: 10
   isShooting: 0
-  normalColor: {r: 1, g: 1, b: 1, a: 0}
-  warningColor: {r: 1, g: 1, b: 0, a: 0}
-  dangerColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!198 &198946540302699058
 ParticleSystem:
   m_ObjectHideFlags: 1

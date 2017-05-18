@@ -31,13 +31,12 @@ namespace AI.Patrol
         /// <summary>
         /// True when has a valid target
         /// </summary>
-        public bool HasChaseTarget
+        public bool hasChaseTarget
         {
             get
             {
                 if (patrolGroup)
                 {
-                    chaseTarget = patrolGroup.target;
                     return chaseTarget && patrolGroup.onView > 0;
                 }
                 return chaseTarget;
@@ -87,7 +86,6 @@ namespace AI.Patrol
         private void OnLoSEnter(Transform target)
         {
             patrolGroup.onView++;
-            patrolGroup.target = target;
             chaseTarget = target;
         }
 
@@ -126,21 +124,21 @@ namespace AI.Patrol
             switch (state)
             {
                 case AIPatrolUnitStates.Patrol:
-                    if (HasChaseTarget)
+                    if (hasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
                     }
                     break;
                 case AIPatrolUnitStates.Chasing:
-                    if (!HasChaseTarget)
+                    if (!hasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Lost;
                         return true;
                     }
                     break;
                 case AIPatrolUnitStates.Lost:
-                    if (HasChaseTarget)
+                    if (hasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
@@ -156,7 +154,7 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Wandering:
-                    if (HasChaseTarget)
+                    if (hasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
@@ -169,7 +167,7 @@ namespace AI.Patrol
                     }
                     break;
                 case AIPatrolUnitStates.Waiting:
-                    if (HasChaseTarget)
+                    if (hasChaseTarget)
                     {
                         state = AIPatrolUnitStates.Chasing;
                         return true;
@@ -202,7 +200,6 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Patrol:
                     navAgent.speed = patrolSpeed;
                     characterControl.target = patrolTarget;
-                    weapon.SetLanternState(LanternStates.Normal);
                     break;
                 case AIPatrolUnitStates.Chasing:
                     navAgent.speed = chaseSpeed;
@@ -210,7 +207,6 @@ namespace AI.Patrol
                     characterControl.target = chaseTarget;
                     characterControl.useRelativePosition = false;
                     characterControl.useRelativeRotation = false;
-                    weapon.SetLanternState(LanternStates.Danger);
                     break;
                 case AIPatrolUnitStates.Lost:
                     wanderOrigin = characterControl.target.position;
@@ -237,9 +233,7 @@ namespace AI.Patrol
                 case AIPatrolUnitStates.Chasing:
                     if (navAgent.velocity.magnitude < 0.1f)
                     {
-                        var toTarget = chaseTarget.position - transform.position;
-                        toTarget.y = 0;
-                        var targetRotation = Quaternion.LookRotation(toTarget);
+                        var targetRotation = Quaternion.LookRotation(chaseTarget.position - transform.position);
                         var deltaRotation = Quaternion.RotateTowards(transform.rotation, targetRotation,
                             navAgent.angularSpeed * Time.deltaTime);
                         transform.rotation = deltaRotation;
@@ -268,8 +262,6 @@ namespace AI.Patrol
                     characterControl.useRelativePosition = true;
                     characterControl.useRelativeRotation = true;
                     characterControl.MoveToTarget();
-                    weapon.transform.localRotation = Quaternion.identity;
-                    weapon.SetLanternState(LanternStates.Warning);
                     break;
                 case AIPatrolUnitStates.Lost:
                     break;

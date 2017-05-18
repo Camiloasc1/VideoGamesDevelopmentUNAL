@@ -2076,7 +2076,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397855925284368}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2727,9 +2727,6 @@ MonoBehaviour:
   reloadTime: 2.5
   ammoPerClip: 10
   isShooting: 0
-  normalColor: {r: 1, g: 1, b: 1, a: 0}
-  warningColor: {r: 1, g: 1, b: 0, a: 0}
-  dangerColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!136 &136481468647940834
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2922,7 +2919,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.5
+  m_Speed: 1
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120

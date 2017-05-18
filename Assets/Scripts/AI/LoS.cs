@@ -16,9 +16,10 @@ namespace AI
 
         private void Reset()
         {
-            foreach (var target in FindObjectsOfType<LoSTarget>())
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
             {
-                targets.Add(target.transform);
+                targets.Add(player.transform);
             }
         }
 
@@ -87,7 +88,7 @@ namespace AI
                 {
                     if (CanSeeTarget(target))
                     {
-                        Gizmos.DrawLine(transform.position + eyesOffset, target.transform.position);
+                        Gizmos.DrawLine(transform.position + eyesOffset, target.transform.position + eyesOffset);
                     }
                 }
             }
@@ -100,7 +101,7 @@ namespace AI
         /// <returns>True if visible, False otherwise</returns>
         private bool CanSeeTarget(Transform target)
         {
-            var toTarget = target.position - (transform.position + eyesOffset);
+            var toTarget = target.position - transform.position;
             var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
 
             // Is near enough
@@ -137,7 +138,7 @@ namespace AI
             RaycastHit hitInfo;
             if (Physics.Raycast(transform.position + eyesOffset, toTarget, out hitInfo, toTarget.magnitude))
             {
-                return hitInfo.transform == target.parent;
+                return hitInfo.transform == target;
             }
             return false;
         }

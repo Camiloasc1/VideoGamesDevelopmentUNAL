@@ -777,6 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224580525457543544}
   - component: {fileID: 114207976940032262}
+  - component: {fileID: 114201066850095630}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1606,6 +1607,17 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: credits
+--- !u!114 &114201066850095630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598022698256248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf33354db559464ab8a58bf510fe25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114207976940032262
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,18 +13,20 @@ namespace Game
 
         public void LoadMainScene()
         {
-            LoadScene(1);
+            LoadScene(2);
         }
 
         public void LoadScene(int scene)
         {
+            DontDestroyOnLoad(gameObject);
             StartCoroutine(LoadAsync(scene));
         }
 
-        private static IEnumerator LoadAsync(int scene)
+        private IEnumerator LoadAsync(int scene)
         {
-            var loading = SceneManager.LoadSceneAsync(scene);
-            yield return loading;
+            yield return SceneManager.LoadSceneAsync(1);
+            yield return SceneManager.LoadSceneAsync(scene);
+            Destroy(gameObject);
         }
     }
 }

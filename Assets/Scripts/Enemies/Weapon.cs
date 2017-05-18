@@ -1,11 +1,13 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Enemies
 {
+    [RequireComponent(typeof(Light))]
     [RequireComponent(typeof(ParticleSystem))]
+    [RequireComponent(typeof(AudioSource))]
     public class Weapon : MonoBehaviour
     {
         [Tooltip("The projectile prefab")] public Projectile projectileTemplate;
@@ -14,9 +16,16 @@ namespace Enemies
         [Tooltip("The delay between shoots")] public float fireRate = 0.25f;
         [Tooltip("The reload time")] public float reloadTime = 2.5f;
         [Tooltip("The ammount of ammo per clip")] public int ammoPerClip = 10;
+        [Tooltip("Fire sound")] public AudioClip fireSound;
+        [Tooltip("Reload sound")] public AudioClip reloadSound;
         [Header("Status")] [Tooltip("The weapon shooting")] public bool isShooting;
+        public Color normalColor;
+        public Color warningColor;
+        public Color dangerColor;
 
         private ParticleSystem gunFlare;
+        private Light lantern;
+        private AudioSource audioSource;
 
         private int clipAmmo;
         private bool canShoot;
@@ -29,6 +38,8 @@ namespace Enemies
         private void Awake()
         {
             gunFlare = GetComponent<ParticleSystem>();
+            lantern = GetComponent<Light>();
+            audioSource = GetComponent<AudioSource>();
 
             if (!projectileTemplate)
             {
@@ -72,11 +83,10 @@ namespace Enemies
         public bool TryShoot(Vector3 target)
         {
             var toTarget = target - transform.position;
-            toTarget.y = 0;
-            var toTargetMagnitude = toTarget.magnitude; // Avoid the property's internal sqrt each time
+            transform.localEulerAngles = new Vector3(Quaternion.LookRotation(toTarget).eulerAngles.x, 0, 0);
 
             // Is far enough
-            if (toTargetMagnitude > ViewDistance)
+            if (toTarget.magnitude > ViewDistance)
             {
                 return false;
             }
@@ -121,6 +131,7 @@ namespace Enemies
 
             clipAmmo--;
             gunFlare.Emit(1);
+            PlaySound(fireSound);
             StartCoroutine(CanShootDelay());
         }
 
@@ -130,6 +141,10 @@ namespace Enemies
             if (clipAmmo == 0)
             {
                 clipAmmo = ammoPerClip;
+                if (!audioSource.isPlaying)
+                {
+                    PlaySound(reloadSound);
+                }
                 yield return new WaitForSeconds(reloadTime);
             }
             else
@@ -138,5 +153,41 @@ namespace Enemies
             }
             canShoot = true;
         }
+
+        public void SetLanternState(LanternStates state)
+        {
+            switch (state)
+            {
+                case LanternStates.Normal:
+                    lantern.color = normalColor;
+                    break;
+                case LanternStates.Warning:
+                    lantern.color = warningColor;
+                    break;
+                case LanternStates.Danger:
+                    lantern.color = dangerColor;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("state", state, null);
+            }
+        }
+
+        private void PlaySound(AudioClip clip)
+        {
+            if (!clip)
+            {
+                return;
+            }
+
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+    }
+
+    public enum LanternStates
+    {
+        Normal,
+        Warning,
+        Danger
     }
 }

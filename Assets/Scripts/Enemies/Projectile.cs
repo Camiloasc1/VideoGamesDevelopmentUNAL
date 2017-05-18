@@ -1,33 +1,35 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace Enemies
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Projectile : MonoBehaviour
     {
-        [Tooltip("The initial speed")] public float speed = 100.0f;
-        [Tooltip("The initial life span")] public float lifeSpan = 1.0f;
+        [Tooltip("The initial speed")] public float speed = 100f;
+        [Tooltip("The initial life span")] public float lifeSpan = 1f;
+        [Tooltip("The damaga caused by this projectile")] public float damage = 1f;
 
         [HideInInspector] public Weapon weapon;
         [HideInInspector] public GameObject instigator;
 
-        private Rigidbody rigidbody;
+        private Rigidbody rb;
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
         {
-            rigidbody.velocity = transform.forward * speed;
+            rb.velocity = transform.forward * speed;
             Destroy(gameObject, lifeSpan);
         }
 
         private void FixedUpdate()
         {
             // Check impacts for high speed projectiles
-            var sweepHits = rigidbody.SweepTestAll(transform.forward, speed * Time.fixedDeltaTime);
+            var sweepHits = rb.SweepTestAll(transform.forward, speed * Time.fixedDeltaTime);
             foreach (var hit in sweepHits)
             {
                 OnTriggerEnter(hit.collider);
@@ -43,8 +45,8 @@ namespace Enemies
         {
             if (other.CompareTag("Player"))
             {
-                print("Damage " + Time.timeSinceLevelLoad);
                 // Damage to player
+                other.GetComponent<PlayerCharacter>().Damage(damage);
                 Destroy(gameObject);
             }
             else if (other.CompareTag("Projectile") || other.CompareTag("Enemy"))

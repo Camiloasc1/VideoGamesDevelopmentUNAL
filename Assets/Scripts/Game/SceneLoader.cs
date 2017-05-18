@@ -18,12 +18,12 @@ namespace Game
 
         public void LoadScene(int scene)
         {
-            DontDestroyOnLoad(gameObject);
             StartCoroutine(LoadAsync(scene));
         }
 
         private IEnumerator LoadAsync(int scene)
         {
+            DontDestroyOnLoad(gameObject);
             yield return SceneManager.LoadSceneAsync(1);
             yield return SceneManager.LoadSceneAsync(scene);
             Destroy(gameObject);

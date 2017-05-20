@@ -9,6 +9,9 @@ namespace Enemies
     {
         public float animationSpeedMultiplier = 1f;
 
+        [HideInInspector] public bool isAiming;
+        [HideInInspector] public bool isFiring;
+
         private Animator animator;
         private NavMeshAgent agent;
 
@@ -23,12 +26,16 @@ namespace Enemies
             UpdateAnimator();
         }
 
+        public void Reload()
+        {
+            animator.SetTrigger("Reload");
+        }
+
         private void UpdateAnimator()
         {
             animator.SetFloat("Speed", agent.velocity.magnitude * animationSpeedMultiplier);
-//            animator.SetBool("IsAiming", false);
-//            animator.SetBool("IsFiring", false);
-//            animator.SetTrigger("Reload");
+            animator.SetBool("IsAiming", isAiming);
+            animator.SetBool("IsFiring", isFiring);
         }
     }
 }

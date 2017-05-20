@@ -8,6 +8,7 @@ namespace AI.Patrol
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(AICharacterControl))]
+    [RequireComponent(typeof(EnemyCharacter))]
     public class AIPatrolUnitController : MonoBehaviour
     {
         [Tooltip("The patrol speed")] public float patrolSpeed = .5f;
@@ -25,6 +26,7 @@ namespace AI.Patrol
 
         private NavMeshAgent navAgent;
         private AICharacterControl characterControl;
+        private EnemyCharacter enemyCharacter;
         private PatrolGroup patrolGroup;
         private Weapon weapon;
 
@@ -46,8 +48,10 @@ namespace AI.Patrol
 
         private void Awake()
         {
-            navAgent = GetComponentInChildren<NavMeshAgent>();
+            navAgent = GetComponent<NavMeshAgent>();
             characterControl = GetComponent<AICharacterControl>();
+            enemyCharacter = GetComponent<EnemyCharacter>();
+
             patrolGroup = GetComponentInParent<PatrolGroup>();
             if (!patrolGroup)
             {
@@ -203,6 +207,8 @@ namespace AI.Patrol
                     navAgent.speed = patrolSpeed;
                     characterControl.target = patrolTarget;
                     weapon.SetLanternState(LanternStates.Normal);
+                    enemyCharacter.isAiming = false;
+                    enemyCharacter.isFiring = false;
                     break;
                 case AIPatrolUnitStates.Chasing:
                     navAgent.speed = chaseSpeed;
@@ -211,10 +217,14 @@ namespace AI.Patrol
                     characterControl.useRelativePosition = false;
                     characterControl.useRelativeRotation = false;
                     weapon.SetLanternState(LanternStates.Danger);
+                    enemyCharacter.isAiming = true;
+                    enemyCharacter.isFiring = true;
                     break;
                 case AIPatrolUnitStates.Lost:
                     wanderOrigin = characterControl.target.position;
                     characterControl.target = null;
+                    enemyCharacter.isAiming = true;
+                    enemyCharacter.isFiring = false;
                     break;
                 case AIPatrolUnitStates.Wandering:
                     navAgent.SetDestination(wanderOrigin + UnityEngine.Random.insideUnitSphere * wanderDistance);

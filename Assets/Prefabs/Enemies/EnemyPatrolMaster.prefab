@@ -1818,7 +1818,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297068300747372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0.17, y: 1.2, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4679215154322070}
@@ -2369,6 +2369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeedMultiplier: 0.5
+  isAiming: 0
+  isFiring: 0
 --- !u!114 &114450828186608526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2398,7 +2400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfView: 30
-  eyesOffset: {x: 0, y: 1.42, z: 0}
+  eyesOffset: {x: 0, y: 1.33, z: 0}
   viewDistance: 10
   hearDistance: 2.5
   targets:
@@ -2639,7 +2641,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -986324392
+  randomSeed: -870018583
   InitialModule:
     serializedVersion: 3
     enabled: 1

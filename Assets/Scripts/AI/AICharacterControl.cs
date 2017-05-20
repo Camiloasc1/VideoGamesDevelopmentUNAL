@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Enemies;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(ThirdPersonCharacter))]
+    [RequireComponent(typeof(EnemyCharacter))]
     public class AICharacterControl : MonoBehaviour
     {
         [Tooltip("The target transform to aim for")] public Transform target; // target to aim for
@@ -16,7 +17,7 @@ namespace AI
         [Tooltip("When to use the relative rotation")] public bool useRelativeRotation;
 
         private NavMeshAgent agent; // the navmesh agent required for the path finding
-        private ThirdPersonCharacter character; // the character we are controlling
+        private EnemyCharacter character; // the character we are controlling
 
         public Vector3 Destination
         {
@@ -32,7 +33,7 @@ namespace AI
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponentInChildren<NavMeshAgent>();
-            character = GetComponent<ThirdPersonCharacter>();
+            character = GetComponent<EnemyCharacter>();
         }
 
         private void Start()

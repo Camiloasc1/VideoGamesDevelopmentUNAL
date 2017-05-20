@@ -2070,7 +2070,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!82 &82287984096675378
 AudioSource:
@@ -2368,6 +2368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494198e2482fd2f489a1776b7293ffad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationSpeedMultiplier: 0.5
 --- !u!114 &114450828186608526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2379,8 +2380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70fc885ab96b404d96d89878ae2745a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 0.5
-  chaseSpeed: 0.75
+  patrolSpeed: 1
+  chaseSpeed: 2
   shootDistance: 5
   wanderingTime: 10
   waitTime: 1
@@ -2432,9 +2433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 0}
   lookAheadForTargetOffset: 1
-  lookAheadForTargetFactor: 0.1
-  lookAheadForSpeedOffset: 10
-  lookAheadForSpeedFactor: 0.2
+  lookAheadForTargetFactor: 0.5
+  lookAheadForSpeedOffset: 1
+  lookAheadForSpeedFactor: 0.5
   progressStyle: 0
   pointToPointThreshold: 4
   target: {fileID: 4357007054253702}
@@ -2571,7 +2572,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.5
+  m_Speed: 1
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -10,8 +10,8 @@ namespace AI.Patrol
     [RequireComponent(typeof(AICharacterControl))]
     public class AIPatrolUnitController : MonoBehaviour
     {
-        [Tooltip("The patrol speed")] [Range(0, 1)] public float patrolSpeed = .5f;
-        [Tooltip("The chase speed")] [Range(0, 1)] public float chaseSpeed = .75f;
+        [Tooltip("The patrol speed")] public float patrolSpeed = .5f;
+        [Tooltip("The chase speed")] public float chaseSpeed = .75f;
         [Tooltip("The shoot distance")] public float shootDistance = 5f;
         [Tooltip("The wandering time")] public float wanderingTime = 10f;
         [Tooltip("The wandering wait time")] public float waitTime = 1f;

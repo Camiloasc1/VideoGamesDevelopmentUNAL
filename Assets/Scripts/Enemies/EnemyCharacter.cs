@@ -1,18 +1,21 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyCharacter : MonoBehaviour
     {
-        private Rigidbody rigidBody;
-        private Animator animator;
+        public float animationSpeedMultiplier = 1f;
 
-        private void Start()
+        private Animator animator;
+        private NavMeshAgent agent;
+
+        private void Awake()
         {
             animator = GetComponent<Animator>();
-            rigidBody = GetComponent<Rigidbody>();
+            agent = GetComponent<NavMeshAgent>();
         }
 
         private void Update()
@@ -22,10 +25,10 @@ namespace Enemies
 
         private void UpdateAnimator()
         {
-            animator.SetFloat("Speed", rigidBody.velocity.magnitude, 0.1f, Time.deltaTime);
-            animator.SetBool("IsAiming", false);
-            animator.SetBool("IsFiring", false);
-            animator.SetTrigger("Reload");
+            animator.SetFloat("Speed", agent.velocity.magnitude * animationSpeedMultiplier);
+//            animator.SetBool("IsAiming", false);
+//            animator.SetBool("IsFiring", false);
+//            animator.SetTrigger("Reload");
         }
     }
 }

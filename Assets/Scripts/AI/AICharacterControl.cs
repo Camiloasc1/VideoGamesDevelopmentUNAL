@@ -1,22 +1,19 @@
-﻿using Enemies;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(EnemyCharacter))]
     public class AICharacterControl : MonoBehaviour
     {
-        [Tooltip("The target transform to aim for")] public Transform target; // target to aim for
+        [Tooltip("The target transform to aim for")] public Transform target;
         [Tooltip("Move to target on Update()")] public bool moveOnUpdate;
         [Tooltip("Initialize the offset at Start()")] public bool useStartOffset;
         [Tooltip("The current offset")] public Vector3 offset;
         [Tooltip("When to use the relative position")] public bool useRelativePosition;
         [Tooltip("When to use the relative rotation")] public bool useRelativeRotation;
 
-        private NavMeshAgent agent; // the navmesh agent required for the path finding
-        private EnemyCharacter character; // the character we are controlling
+        private NavMeshAgent agent;
 
         public Vector3 Destination
         {
@@ -30,9 +27,7 @@ namespace AI
 
         private void Awake()
         {
-            // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<NavMeshAgent>();
-            character = GetComponent<EnemyCharacter>();
+            agent = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
@@ -41,9 +36,6 @@ namespace AI
             {
                 offset = target.InverseTransformDirection(transform.position - target.position);
             }
-
-            agent.updateRotation = false;
-            agent.updatePosition = true;
         }
 
         private void Update()

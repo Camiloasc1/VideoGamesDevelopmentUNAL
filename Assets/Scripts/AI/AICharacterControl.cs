@@ -1,7 +1,6 @@
 ﻿using Enemies;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace AI
 {
@@ -53,9 +52,6 @@ namespace AI
             {
                 MoveToTarget();
             }
-
-            character.Move(agent.remainingDistance > agent.stoppingDistance ? agent.desiredVelocity : Vector3.zero,
-                false, false);
         }
 
         public void MoveToTarget()

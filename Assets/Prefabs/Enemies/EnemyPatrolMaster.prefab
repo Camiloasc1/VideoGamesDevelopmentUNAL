@@ -616,8 +616,8 @@ GameObject:
   - component: {fileID: 54179315560939504}
   - component: {fileID: 136948889833322192}
   - component: {fileID: 195535166685273552}
+  - component: {fileID: 114163888381010546}
   - component: {fileID: 114747102405975738}
-  - component: {fileID: 114882125896773948}
   - component: {fileID: 114863953080592660}
   - component: {fileID: 114578966200630182}
   - component: {fileID: 114450828186608526}
@@ -2357,6 +2357,17 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   warningColor: {r: 1, g: 1, b: 0, a: 0}
   dangerColor: {r: 1, g: 0, b: 0, a: 0}
+--- !u!114 &114163888381010546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573853007303664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494198e2482fd2f489a1776b7293ffad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114450828186608526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2427,25 +2438,6 @@ MonoBehaviour:
   progressStyle: 0
   pointToPointThreshold: 4
   target: {fileID: 4357007054253702}
---- !u!114 &114882125896773948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1573853007303664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
 --- !u!136 &136948889833322192
 CapsuleCollider:
   m_ObjectHideFlags: 1

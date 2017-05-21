@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace UI
 {
     [RequireComponent(typeof(Text))]
-    public class RemainingTime : MonoBehaviour
+    public class VictoryTime : MonoBehaviour
     {
         private LevelTimer levelTimer;
         private Text timeText;
@@ -21,13 +21,13 @@ namespace UI
             timeText = GetComponent<Text>();
         }
 
-        private void Update()
+        private void OnEnable()
         {
             if (!levelTimer)
             {
                 return;
             }
-            timeText.text = levelTimer.TimeLeftString;
+            timeText.text = levelTimer.TimeElapsedString;
         }
     }
 }

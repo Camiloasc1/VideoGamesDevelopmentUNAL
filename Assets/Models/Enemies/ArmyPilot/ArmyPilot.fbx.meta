@@ -2780,7 +2780,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle Reload
       takeName: Idle Reload
-      firstFrame: 0
+      firstFrame: 50
       lastFrame: 309
       wrapMode: 0
       orientationOffsetY: 0

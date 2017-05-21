@@ -30,6 +30,8 @@ namespace Enemies
         private int clipAmmo;
         private bool canShoot;
 
+        public bool IsReloading { get; private set; }
+
         public float ViewDistance
         {
             get { return projectileTemplate.lifeSpan * projectileTemplate.speed; }
@@ -140,12 +142,14 @@ namespace Enemies
             canShoot = false;
             if (clipAmmo == 0)
             {
+                IsReloading = true;
                 clipAmmo = ammoPerClip;
                 if (!audioSource.isPlaying)
                 {
                     PlaySound(reloadSound);
                 }
                 yield return new WaitForSeconds(reloadTime);
+                IsReloading = false;
             }
             else
             {

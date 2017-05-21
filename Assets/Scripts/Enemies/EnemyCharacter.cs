@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,11 +15,18 @@ namespace Enemies
 
         private Animator animator;
         private NavMeshAgent agent;
+        private Weapon weapon;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
             agent = GetComponent<NavMeshAgent>();
+
+            weapon = GetComponentInChildren<Weapon>();
+            if (!weapon)
+            {
+                throw new ArgumentNullException("weapon", "Weapon not found in children");
+            }
         }
 
         private void Update()
@@ -36,6 +44,7 @@ namespace Enemies
             animator.SetFloat("Speed", agent.velocity.magnitude * animationSpeedMultiplier);
             animator.SetBool("IsAiming", isAiming);
             animator.SetBool("IsFiring", isFiring);
+            animator.SetBool("IsReloading", weapon.IsReloading);
         }
     }
 }

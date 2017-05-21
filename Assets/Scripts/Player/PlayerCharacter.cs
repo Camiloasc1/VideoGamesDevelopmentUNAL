@@ -89,10 +89,7 @@ namespace Player
             if (Health > 0f)
             {
                 Health -= damage;
-                if (!audioSources[0].isPlaying)
-                {
-                    PlaySound(0, playerSounds.damage);
-                }
+                PlaySound(0, playerSounds.damage);
                 OnPlayerRecieveDamage(damage);
                 if (Health <= 0f)
                 {

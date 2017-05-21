@@ -1775,16 +1775,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114008958132065204, guid: f17a84db378c14a4da41d12e3e1b2761,
-        type: 2}
-      propertyPath: targets.Array.data[0]
-      value: 
-      objectReference: {fileID: 1922212169}
     - target: {fileID: 114731779948311956, guid: f17a84db378c14a4da41d12e3e1b2761,
         type: 2}
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 1091945919}
+    - target: {fileID: 114008958132065204, guid: f17a84db378c14a4da41d12e3e1b2761,
+        type: 2}
+      propertyPath: targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 1922212169}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f17a84db378c14a4da41d12e3e1b2761, type: 2}
   m_IsPrefabParent: 0

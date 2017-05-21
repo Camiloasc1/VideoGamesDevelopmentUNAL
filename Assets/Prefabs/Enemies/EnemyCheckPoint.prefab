@@ -2391,7 +2391,7 @@ MonoBehaviour:
   projectileTemplate: {fileID: 114543955841211394, guid: 268c7c5a638234e428ebc5e9d513aed7,
     type: 2}
   projectilePool: {fileID: 0}
-  shootAngle: 2
+  shootAngle: 1
   fireRate: 0
   reloadTime: 2.5
   ammoPerClip: 1
@@ -2601,7 +2601,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 830884561
+  randomSeed: -901502329
   InitialModule:
     serializedVersion: 3
     enabled: 1

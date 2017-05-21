@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 114525754904512330}
   - component: {fileID: 114425287923077656}
   - component: {fileID: 114643678555487144}
+  - component: {fileID: 114485290431616682}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -177,6 +178,7 @@ GameObject:
   - component: {fileID: 222458706545597820}
   - component: {fileID: 114032536289357968}
   - component: {fileID: 114234045931664552}
+  - component: {fileID: 114983946828558748}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -677,6 +679,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114485290431616682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406570278943716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d6a632794172045914b291159af992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114525754904512330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -906,6 +919,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 00:00
+--- !u!114 &114983946828558748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609924939711644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d6a632794172045914b291159af992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114998619219073092
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -355,6 +355,10 @@ Prefab:
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 1091945919}
+    - target: {fileID: 1521051928963680, guid: 7951a2dcc9cc6954dac002c641eaa872, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7951a2dcc9cc6954dac002c641eaa872, type: 2}
   m_IsPrefabParent: 0
@@ -1879,6 +1883,10 @@ Prefab:
     - target: {fileID: 1521051928963680, guid: 7951a2dcc9cc6954dac002c641eaa872, type: 2}
       propertyPath: m_Name
       value: EnemyPatrolSlave (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521051928963680, guid: 7951a2dcc9cc6954dac002c641eaa872, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7951a2dcc9cc6954dac002c641eaa872, type: 2}

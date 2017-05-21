@@ -2398,12 +2398,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5b221280e682648bbff568d5a56a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4448311792048238}
+  target: {fileID: 0}
   moveOnUpdate: 1
-  useStartOffset: 0
+  useStartOffset: 1
   offset: {x: 0, y: 0, z: 0}
-  useRelativePosition: 0
-  useRelativeRotation: 0
+  useRelativePosition: 1
+  useRelativeRotation: 1
 --- !u!114 &114984807089893668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfView: 30
-  eyesOffset: {x: 0, y: 1.33, z: 0}
+  eyesOffset: {x: 0, y: 1.42, z: 0}
   viewDistance: 10
   hearDistance: 2.5
   targets:

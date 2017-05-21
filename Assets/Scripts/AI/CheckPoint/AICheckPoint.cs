@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace AI.CheckPoint
 {
+    [RequireComponent(typeof(EnemyCharacter))]
     public class AICheckPoint : MonoBehaviour
     {
         [Tooltip("The rotation per step")] public float stepRotation = 90f;
@@ -17,6 +18,7 @@ namespace AI.CheckPoint
         private Quaternion patrolTarget;
         private AIPatrolUnitStates state;
 
+        private EnemyCharacter enemyCharacter;
         private Weapon weapon;
 
         /// <summary>
@@ -29,6 +31,8 @@ namespace AI.CheckPoint
 
         private void Awake()
         {
+            enemyCharacter = GetComponent<EnemyCharacter>();
+
             weapon = GetComponentInChildren<Weapon>();
             if (!weapon)
             {
@@ -146,9 +150,13 @@ namespace AI.CheckPoint
                 case AIPatrolUnitStates.Patrol:
                     patrolTarget *= Quaternion.Euler(0f, stepRotation, 0f);
                     weapon.SetLanternState(LanternStates.Normal);
+                    enemyCharacter.isAiming = false;
+                    enemyCharacter.isFiring = false;
                     break;
                 case AIPatrolUnitStates.Chasing:
                     weapon.SetLanternState(LanternStates.Danger);
+                    enemyCharacter.isAiming = true;
+                    enemyCharacter.isFiring = true;
                     break;
                 case AIPatrolUnitStates.Waiting:
                     break;

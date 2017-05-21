@@ -29,7 +29,9 @@ namespace AI
             {
                 lantern.type = LightType.Spot;
                 lantern.spotAngle = fieldOfView * 2;
-                lantern.range = viewDistance;
+                var offset = lantern.transform.localPosition;
+                offset.y = 0;
+                lantern.range = viewDistance - offset.magnitude;
             }
         }
 

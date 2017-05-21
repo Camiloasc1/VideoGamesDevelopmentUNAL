@@ -52,7 +52,6 @@ namespace UI.Menus
                 switch (CurrentView)
                 {
                     case MainViews.Main:
-                        gameObject.SetActive(false);
                         break;
                     case MainViews.Settings:
                         SetViewMain();

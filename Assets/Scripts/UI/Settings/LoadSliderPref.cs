@@ -16,11 +16,21 @@ namespace UI.Settings
 
         private void OnEnable()
         {
+            if (!GameController.Prefs)
+            {
+                return;
+            }
+            
             GameController.Prefs.OnSettingsChanged += ReloadValue;
         }
 
         private void OnDisable()
         {
+            if (!GameController.Prefs)
+            {
+                return;
+            }
+            
             GameController.Prefs.OnSettingsChanged -= ReloadValue;
         }
 

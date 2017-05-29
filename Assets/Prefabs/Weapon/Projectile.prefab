@@ -72,7 +72,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,22 +91,16 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.5
+  m_Time: 5
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.10121566
-        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -159,8 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c4f03b7296bfd4c9d44823daa365a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 100
+  speed: 100
   lifeSpan: 1
+  damage: 1
   weapon: {fileID: 0}
   instigator: {fileID: 0}
 --- !u!136 &136315082606493870

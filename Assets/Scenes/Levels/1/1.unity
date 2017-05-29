@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 0ba35d98a09e80941af6d3936d503910
-  m_OcclusionCullingData: {fileID: 36300000, guid: 1fb1d6d31a0edd44286bd161db612e7a,
+  m_OcclusionCullingData: {fileID: 36300000, guid: 23a2b55d5d9b19a43b18feaa69f6236a,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -108,7 +108,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 23800000, guid: e1d87b9a02f431045a5a55ef83f20a8f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 38d8c38ac1a52534f8174a37af8483ab, type: 2}
 --- !u!1001 &2064211
 Prefab:
   m_ObjectHideFlags: 0
@@ -1714,8 +1714,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 44208076}
-  m_LocalRotation: {x: -0.20430963, y: 0.47537377, z: 0.11452899, w: 0.8480333}
-  m_LocalPosition: {x: -79.92876, y: -150.58409, z: -137.52805}
+  m_LocalRotation: {x: -0.2850759, y: 0.1311878, z: 0.03942332, w: 0.9486661}
+  m_LocalPosition: {x: -0.6207898, y: -111.757416, z: -72.54399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 776367382}

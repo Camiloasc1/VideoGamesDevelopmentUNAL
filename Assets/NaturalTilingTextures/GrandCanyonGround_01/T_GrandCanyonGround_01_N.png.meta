@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: 8e9ddd25e97b2e84e885b81f734615fa
 labels:
 - NaturalTilingTextures
-timeCreated: 1495345885
+timeCreated: 1496088478
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -46,7 +46,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 1
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0

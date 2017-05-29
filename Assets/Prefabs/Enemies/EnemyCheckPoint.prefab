@@ -2359,6 +2359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04d490a568745f468f62cdfd2f47b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomStepRotation: 0
+  randomRange: {x: 0, y: 0}
   stepRotation: 90
   stepWaitTime: 1
   patrolAngularSpeed: 15
@@ -2531,7 +2533,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1222243058583918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1

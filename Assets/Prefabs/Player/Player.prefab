@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7f2aee2e963ff478c16bdbc1f30f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   playerSounds:
     damage:
     - {fileID: 8300000, guid: a296547eee6c02940a6013c9dd8e37ac, type: 3}
@@ -2888,9 +2888,9 @@ MonoBehaviour:
   m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 2
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.3
+  m_GroundCheckDistance: 0.5
 --- !u!114 &114684676648371622
 MonoBehaviour:
   m_ObjectHideFlags: 1

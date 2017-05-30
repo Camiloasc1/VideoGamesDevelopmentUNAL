@@ -137,12 +137,6 @@ Transform:
   m_Father: {fileID: 1839262958}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8099998 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114780635121575666, guid: d69b250cfde3ed949894180f4a387fe7,
-    type: 2}
-  m_PrefabInternal: {fileID: 697408825}
-  m_Script: {fileID: 11500000, guid: fb3ecff01e4fb5f4db5229355e25967e, type: 3}
 --- !u!1 &19027922
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +719,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4996222846263080, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14.52
       objectReference: {fileID: 0}
     - target: {fileID: 4996222846263080, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
       propertyPath: m_LocalPosition.y
@@ -733,7 +727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4996222846263080, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.82
       objectReference: {fileID: 0}
     - target: {fileID: 4996222846263080, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
       propertyPath: m_LocalRotation.x
@@ -754,6 +748,11 @@ Prefab:
     - target: {fileID: 4996222846263080, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122681538069026, guid: 8c66031b1ce998944a99c757745e1a54,
+        type: 2}
+      propertyPath: maxHealth
+      value: 9000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c66031b1ce998944a99c757745e1a54, type: 2}
@@ -1093,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ab9e5d812d87d4e9bab1704d1e3b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 8099998}
+  pauseCanvas: {fileID: 0}
 --- !u!114 &941337505
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace AI.CheckPoint
 {
     [RequireComponent(typeof(EnemyCharacter))]
     public class AICheckPoint : MonoBehaviour
     {
+        [Tooltip("When to use a random rotation step")] public bool randomStepRotation;
+        [Tooltip("The range for the random rotation step")] public Vector2 randomRange;
         [Tooltip("The rotation per step")] public float stepRotation = 90f;
         [Tooltip("The wait time per step")] public float stepWaitTime = 1f;
         [Tooltip("The angular speed")] public float patrolAngularSpeed = 15f;
@@ -148,7 +150,14 @@ namespace AI.CheckPoint
             switch (state)
             {
                 case AIPatrolUnitStates.Patrol:
-                    patrolTarget *= Quaternion.Euler(0f, stepRotation, 0f);
+                    if (randomStepRotation)
+                    {
+                        patrolTarget = Quaternion.Euler(0f, Random.Range(randomRange.x, randomRange.y), 0f);
+                    }
+                    else
+                    {
+                        patrolTarget *= Quaternion.Euler(0f, stepRotation, 0f);
+                    }
                     weapon.SetLanternState(LanternStates.Normal);
                     enemyCharacter.isAiming = false;
                     enemyCharacter.isFiring = false;

@@ -2394,8 +2394,8 @@ MonoBehaviour:
     type: 2}
   projectilePool: {fileID: 0}
   shootAngle: 1
-  fireRate: 0
-  reloadTime: 2.5
+  fireRate: 10
+  reloadTime: 0.2
   ammoPerClip: 1
   fireSound: {fileID: 8300000, guid: dceff2f23726c404a83013ec5a8f4da0, type: 3}
   reloadSound: {fileID: 8300000, guid: 8566a22ea82a45a4b9b066a34ff4535d, type: 3}
